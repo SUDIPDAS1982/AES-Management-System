@@ -14,8 +14,8 @@ namespace AES_Management_System
 {
     public partial class frmLogin : Form
     {
-        public BA ba = new BA();
-        public BE be = new BE();
+        public BA mBA = new BA();
+        //public BE pBE = new BE();
         public frmLogin()
         {
             InitializeComponent();
@@ -23,11 +23,11 @@ namespace AES_Management_System
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            be.UserName = txtUserName.Text;
-            be.Password = txtPassword.Text;
-            if(ba.UserLogin(be)>0)
+            Program.gBE.UserName = txtUserName.Text;
+            Program.gBE.Password = txtPassword.Text;
+            if(mBA.UserLogin(Program.gBE) >0)
             {
-                if(ba.IsAdmin(be)=="ADMIN")
+                if(mBA.IsAdmin(Program.gBE) =="ADMIN")
                 {
                     MessageBox.Show("Login success.");
                     this.Hide();

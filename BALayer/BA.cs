@@ -10,15 +10,19 @@ namespace BALayer
 {
     public class BA
     {
-        BE be = new BE();
-        DA da = new DA();
-        public int UserLogin(BE be)
+        //BE mBE = new BE();
+        DA mDA = new DA();
+        public int UserLogin(BE BE_In)
         {
-            return da.UserLogin(be);
+            return mDA.UserLogin(BE_In);
         }
-        public string IsAdmin(BE be)
+        public string IsAdmin(BE BE_In)
         {
-            return da.IsAdmin(be);
+            return mDA.IsAdmin(BE_In);
+        }
+        public string SelectUserName(BE BE_IN)
+        {
+           return mDA.SelectUserName(BE_IN);
         }
     }
 }
