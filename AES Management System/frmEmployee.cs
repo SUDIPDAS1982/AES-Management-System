@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AES_Management_System
 {
-    public partial class Form1 : Form
+    public partial class frmEmployee : Form
     {
-        public Form1()
+        public frmEmployee()
         {
             InitializeComponent();
         }
