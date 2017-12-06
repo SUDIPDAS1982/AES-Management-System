@@ -14,7 +14,7 @@ namespace AES_Management_System
 {
     public partial class frmAdmin : Form
     {
-        public BA mBA = new BA();
+        public clsBA mBA = new clsBA();
         //public BE mBE = new BE();
         public frmAdmin()
         {
@@ -26,6 +26,18 @@ namespace AES_Management_System
         {
             string pUserName= mBA.SelectUserName(Program.gBE);
             lblWelcome.Text= "Welcome " + pUserName + "";
+        }
+
+        private void mnuEmployeeDetails_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmEmployeeDetails pFrmEmployeeDetails = new frmEmployeeDetails();
+            pFrmEmployeeDetails.ShowDialog();
+        }
+
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

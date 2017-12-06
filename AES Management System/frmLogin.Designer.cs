@@ -32,8 +32,8 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.cmdLogin = new System.Windows.Forms.Button();
+            this.cmdExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblUserName
@@ -69,33 +69,33 @@
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
             this.txtPassword.TabIndex = 3;
             // 
-            // btnLogin
+            // cmdLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(29, 169);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
-            this.btnLogin.TabIndex = 4;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.cmdLogin.Location = new System.Drawing.Point(29, 169);
+            this.cmdLogin.Name = "cmdLogin";
+            this.cmdLogin.Size = new System.Drawing.Size(75, 23);
+            this.cmdLogin.TabIndex = 4;
+            this.cmdLogin.Text = "Login";
+            this.cmdLogin.UseVisualStyleBackColor = true;
+            this.cmdLogin.Click += new System.EventHandler(this.cmdLogin_Click);
             // 
-            // btnExit
+            // cmdExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(146, 169);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
-            this.btnExit.TabIndex = 5;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.cmdExit.Location = new System.Drawing.Point(146, 169);
+            this.cmdExit.Name = "cmdExit";
+            this.cmdExit.Size = new System.Drawing.Size(75, 23);
+            this.cmdExit.TabIndex = 5;
+            this.cmdExit.Text = "Exit";
+            this.cmdExit.UseVisualStyleBackColor = true;
+            this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(271, 247);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.cmdExit);
+            this.Controls.Add(this.cmdLogin);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.lblPassword);
@@ -113,8 +113,8 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button cmdLogin;
+        private System.Windows.Forms.Button cmdExit;
     }
 }
 

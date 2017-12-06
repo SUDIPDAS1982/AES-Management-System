@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addEmployeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editEmployeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.employeeDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteEmployeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.attendanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.leaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.leaveSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.leaveHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAddEmployee = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditEmployee = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEmployeeDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDeleteEmployee = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAttendance = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLeave = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLeaveSummary = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLeaveHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -47,91 +47,93 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.profileToolStripMenuItem,
-            this.attendanceToolStripMenuItem,
-            this.leaveToolStripMenuItem,
-            this.exitToolStripMenuItem});
+            this.mnuProfile,
+            this.mnuAttendance,
+            this.mnuLeave,
+            this.mnuExit});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(284, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // profileToolStripMenuItem
+            // mnuProfile
             // 
-            this.profileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addEmployeeToolStripMenuItem,
-            this.editEmployeeToolStripMenuItem,
-            this.employeeDetailsToolStripMenuItem,
-            this.deleteEmployeeToolStripMenuItem});
-            this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            this.profileToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.profileToolStripMenuItem.Text = "Profile";
+            this.mnuProfile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuAddEmployee,
+            this.mnuEditEmployee,
+            this.mnuEmployeeDetails,
+            this.mnuDeleteEmployee});
+            this.mnuProfile.Name = "mnuProfile";
+            this.mnuProfile.Size = new System.Drawing.Size(53, 20);
+            this.mnuProfile.Text = "Profile";
             // 
-            // addEmployeeToolStripMenuItem
+            // mnuAddEmployee
             // 
-            this.addEmployeeToolStripMenuItem.Name = "addEmployeeToolStripMenuItem";
-            this.addEmployeeToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.addEmployeeToolStripMenuItem.Text = "Add Employee";
+            this.mnuAddEmployee.Name = "mnuAddEmployee";
+            this.mnuAddEmployee.Size = new System.Drawing.Size(164, 22);
+            this.mnuAddEmployee.Text = "Add Employee";
             // 
-            // editEmployeeToolStripMenuItem
+            // mnuEditEmployee
             // 
-            this.editEmployeeToolStripMenuItem.Name = "editEmployeeToolStripMenuItem";
-            this.editEmployeeToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.editEmployeeToolStripMenuItem.Text = "Edit Employee";
+            this.mnuEditEmployee.Name = "mnuEditEmployee";
+            this.mnuEditEmployee.Size = new System.Drawing.Size(164, 22);
+            this.mnuEditEmployee.Text = "Edit Employee";
             // 
-            // employeeDetailsToolStripMenuItem
+            // mnuEmployeeDetails
             // 
-            this.employeeDetailsToolStripMenuItem.Name = "employeeDetailsToolStripMenuItem";
-            this.employeeDetailsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.employeeDetailsToolStripMenuItem.Text = "Employee Details";
+            this.mnuEmployeeDetails.Name = "mnuEmployeeDetails";
+            this.mnuEmployeeDetails.Size = new System.Drawing.Size(164, 22);
+            this.mnuEmployeeDetails.Text = "Employee Details";
+            this.mnuEmployeeDetails.Click += new System.EventHandler(this.mnuEmployeeDetails_Click);
             // 
-            // deleteEmployeeToolStripMenuItem
+            // mnuDeleteEmployee
             // 
-            this.deleteEmployeeToolStripMenuItem.Name = "deleteEmployeeToolStripMenuItem";
-            this.deleteEmployeeToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.deleteEmployeeToolStripMenuItem.Text = "Delete Employee";
+            this.mnuDeleteEmployee.Name = "mnuDeleteEmployee";
+            this.mnuDeleteEmployee.Size = new System.Drawing.Size(164, 22);
+            this.mnuDeleteEmployee.Text = "Delete Employee";
             // 
-            // attendanceToolStripMenuItem
+            // mnuAttendance
             // 
-            this.attendanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.checkToolStripMenuItem});
-            this.attendanceToolStripMenuItem.Name = "attendanceToolStripMenuItem";
-            this.attendanceToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
-            this.attendanceToolStripMenuItem.Text = "Attendance";
+            this.mnuAttendance.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuCheck});
+            this.mnuAttendance.Name = "mnuAttendance";
+            this.mnuAttendance.Size = new System.Drawing.Size(80, 20);
+            this.mnuAttendance.Text = "Attendance";
             // 
-            // checkToolStripMenuItem
+            // mnuCheck
             // 
-            this.checkToolStripMenuItem.Name = "checkToolStripMenuItem";
-            this.checkToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.checkToolStripMenuItem.Text = "Check";
+            this.mnuCheck.Name = "mnuCheck";
+            this.mnuCheck.Size = new System.Drawing.Size(107, 22);
+            this.mnuCheck.Text = "Check";
             // 
-            // leaveToolStripMenuItem
+            // mnuLeave
             // 
-            this.leaveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.leaveSummaryToolStripMenuItem,
-            this.leaveHistoryToolStripMenuItem});
-            this.leaveToolStripMenuItem.Name = "leaveToolStripMenuItem";
-            this.leaveToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.leaveToolStripMenuItem.Text = "Leave";
+            this.mnuLeave.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuLeaveSummary,
+            this.mnuLeaveHistory});
+            this.mnuLeave.Name = "mnuLeave";
+            this.mnuLeave.Size = new System.Drawing.Size(49, 20);
+            this.mnuLeave.Text = "Leave";
             // 
-            // leaveSummaryToolStripMenuItem
+            // mnuLeaveSummary
             // 
-            this.leaveSummaryToolStripMenuItem.Name = "leaveSummaryToolStripMenuItem";
-            this.leaveSummaryToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.leaveSummaryToolStripMenuItem.Text = "Leave Summary";
+            this.mnuLeaveSummary.Name = "mnuLeaveSummary";
+            this.mnuLeaveSummary.Size = new System.Drawing.Size(158, 22);
+            this.mnuLeaveSummary.Text = "Leave Summary";
             // 
-            // leaveHistoryToolStripMenuItem
+            // mnuLeaveHistory
             // 
-            this.leaveHistoryToolStripMenuItem.Name = "leaveHistoryToolStripMenuItem";
-            this.leaveHistoryToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.leaveHistoryToolStripMenuItem.Text = "Leave History";
+            this.mnuLeaveHistory.Name = "mnuLeaveHistory";
+            this.mnuLeaveHistory.Size = new System.Drawing.Size(158, 22);
+            this.mnuLeaveHistory.Text = "Leave History";
             // 
-            // exitToolStripMenuItem
+            // mnuExit
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.Size = new System.Drawing.Size(37, 20);
+            this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
             // lblWelcome
             // 
@@ -163,17 +165,17 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem profileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addEmployeeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editEmployeeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem employeeDetailsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteEmployeeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem attendanceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem checkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem leaveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem leaveSummaryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem leaveHistoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuProfile;
+        private System.Windows.Forms.ToolStripMenuItem mnuAddEmployee;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditEmployee;
+        private System.Windows.Forms.ToolStripMenuItem mnuEmployeeDetails;
+        private System.Windows.Forms.ToolStripMenuItem mnuDeleteEmployee;
+        private System.Windows.Forms.ToolStripMenuItem mnuAttendance;
+        private System.Windows.Forms.ToolStripMenuItem mnuCheck;
+        private System.Windows.Forms.ToolStripMenuItem mnuLeave;
+        private System.Windows.Forms.ToolStripMenuItem mnuLeaveSummary;
+        private System.Windows.Forms.ToolStripMenuItem mnuLeaveHistory;
+        private System.Windows.Forms.ToolStripMenuItem mnuExit;
         private System.Windows.Forms.Label lblWelcome;
     }
 }

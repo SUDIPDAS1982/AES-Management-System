@@ -10,8 +10,7 @@ namespace AES_Management_System
 {
     static class Program
     {
-        public static BE gBE = new BE();
-
+        public static clsBE gBE = new clsBE();
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

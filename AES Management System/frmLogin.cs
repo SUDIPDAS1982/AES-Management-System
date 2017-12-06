@@ -14,14 +14,14 @@ namespace AES_Management_System
 {
     public partial class frmLogin : Form
     {
-        public BA mBA = new BA();
+        public clsBA mBA = new clsBA();
         //public BE pBE = new BE();
         public frmLogin()
         {
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void cmdLogin_Click(object sender, EventArgs e)
         {
             Program.gBE.UserName = txtUserName.Text;
             Program.gBE.Password = txtPassword.Text;
@@ -48,7 +48,7 @@ namespace AES_Management_System
             }
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void cmdExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

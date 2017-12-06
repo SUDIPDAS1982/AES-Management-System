@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BELayer
 {
-    public class BE
+    public class clsBE
     {
         public string _UserName;
 
@@ -22,6 +22,12 @@ namespace BELayer
             get { return _Password; }
             set { _Password = value; }
         }
+        public int _UserId;
 
+        public int UserId
+        {
+            get { return _UserId; }
+            set { _UserId = value; }
+        }
     }
 }
