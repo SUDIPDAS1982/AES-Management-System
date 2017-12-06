@@ -116,5 +116,31 @@ namespace DALayer
             con.Close();
             return pSingleUserDetails;
         }
+        public int IsLoggedIn(clsBE BE_In)
+        //==============================
+        {
+            con.Open();
+            string pUserName = BE_In.UserName;
+            DateTime pLoginDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            string pSQL = "select username from tbluserattendance where logindate='" + pLoginDate + "' and userid in (select UserId from tblUserLogin where UserName='" + pUserName + "')";
+            SqlCommand cmd = new SqlCommand(pSQL, con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
+            return dt.Rows.Count;
+        }
+        public string GetUserId(clsBE BE_In)
+            //=======================================
+        {
+            con.Open();
+            string pUserName = BE_In.UserName;
+            SqlCommand cmd = new SqlCommand("select userid from tblUserLogin where username='" + pUserName + "'", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
+            return dt.Rows[0][0].ToString();
+        }
     }
 }

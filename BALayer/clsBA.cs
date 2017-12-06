@@ -40,5 +40,13 @@ namespace BALayer
         {
             return mDA.GetSingleUserDetails(BE_In);
         }
+        public int IsLoggedIn(clsBE BE_In)
+        {
+            return mDA.IsLoggedIn(BE_In);
+        }
+        public string GetUserId(clsBE BE_In)
+        {
+            return mDA.GetUserId(BE_In);
+        }
     }
 }
