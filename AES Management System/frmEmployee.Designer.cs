@@ -82,6 +82,7 @@
             this.cmdAttendance.TabIndex = 4;
             this.cmdAttendance.Text = "Attendance";
             this.cmdAttendance.UseVisualStyleBackColor = true;
+            this.cmdAttendance.Click += new System.EventHandler(this.cmdAttendance_Click);
             // 
             // cmdExit
             // 

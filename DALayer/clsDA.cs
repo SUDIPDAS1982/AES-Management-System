@@ -116,12 +116,12 @@ namespace DALayer
             con.Close();
             return pSingleUserDetails;
         }
-        public int IsUserLoggedIn(clsBE BE_In)
-        //==============================
+        public int IsUserLoggedIn(clsBE BE_In, DateTime pDate_In)
+        //==========================================================
         {
             con.Open();
             string pUserName = BE_In.UserName;
-            DateTime pLoginDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            DateTime pLoginDate = pDate_In;
             string pSQL = "select fldUserName from tblUserAttendance where fldLoginDate='" + pLoginDate + "' and fldUserId in (select fldUserId from tblUserLogin where fldUserName='" + pUserName + "')";
             SqlCommand cmd = new SqlCommand(pSQL, con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -129,6 +129,38 @@ namespace DALayer
             da.Fill(dt);
             con.Close();
             return dt.Rows.Count;
+        }
+        public int IsUserLoggedOut(clsBE BE_In, DateTime pDate_In, DateTime pTime_In)
+        //============================================================================
+        {
+            con.Open();
+            string pUserName = BE_In.UserName;
+            DateTime pLoginDate = pDate_In;
+            DateTime pLoginTime = pTime_In;
+            string pSQL = "select fldLogoutTime from tblUserAttendanceDetails where fldLoginDate='" + pLoginDate + "' and fldLoginTime='"+pLoginTime+"' and fldUserId in (select fldUserId from tblUserLogin where fldUserName='" + pUserName + "')";
+            SqlCommand cmd = new SqlCommand(pSQL, con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
+            if (!Convert.IsDBNull(dt.Rows[0][0]))
+            {
+                return 1;
+            }
+            
+            return 0;
+        }
+        public string GetMaxLogInTime(clsBE BE_In, DateTime pDate_In)
+        {
+            con.Open();
+            string pUserName = BE_In.UserName;
+            DateTime pLoginDate = pDate_In;
+            SqlCommand cmd = new SqlCommand("select MAX(fldLoginTime) from tblUserAttendanceDetails where fldUserName='" + pUserName + "' and fldLoginDate='" + pLoginDate + "'", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
+            return dt.Rows[0][0].ToString();
         }
         public string GetUserId(clsBE BE_In)
             //=======================================
@@ -141,16 +173,6 @@ namespace DALayer
             da.Fill(dt);
             con.Close();
             return dt.Rows[0][0].ToString();
-        }
-        public int TimeInInsert(clsBE BE_In, DateTime pDate, DateTime pTime)
-        {
-            con.Open();
-            String pUserName = BE_In.UserName;
-            int pUserId = BE_In.UserId;
-            SqlCommand cmd = new SqlCommand("INSERT INTO tblUserAttendance (fldUserId, fldUserName, fldLoginDate, fldLoginTime) values ('"+pUserId+"','" + pUserName + "',' " +pDate + "', '" + pTime + "')", con);
-            int i = cmd.ExecuteNonQuery();
-            con.Close();
-            return i;
         }
         public string IsUserActive(clsBE BE_In)
         //==============================
@@ -165,12 +187,45 @@ namespace DALayer
             con.Close();
             return dt.Rows[0][0].ToString();
         }
-        public int TimeOutInsert(clsBE BE_In, DateTime pDate, DateTime pTime)
+        public int TimeInInsert(clsBE BE_In, DateTime pDate_In, DateTime pTime_In)
         {
             con.Open();
+            int i = 0;
             String pUserName = BE_In.UserName;
-            SqlCommand cmd = new SqlCommand("update tblUserAttendance set fldLogoutTime='" + pTime + "' where fldUserName='" + pUserName + "' and fldLoginDate='" + pDate + "'", con);
-            int i = cmd.ExecuteNonQuery();
+            int pUserId = BE_In.UserId;
+            SqlCommand cmd = new SqlCommand("INSERT INTO tblUserAttendance (fldUserId, fldUserName, fldLoginDate, fldLoginTime) values ('"+pUserId+"','" + pUserName + "',' " +pDate_In + "', '" + pTime_In + "')", con);
+            i = cmd.ExecuteNonQuery();
+            if(i > 0)
+            {
+                cmd = new SqlCommand("INSERT INTO tblUserAttendanceDetails (fldUserId, fldUserName, fldLoginDate, fldLoginTime) values ('" + pUserId + "','" + pUserName + "',' " + pDate_In + "', '" + pTime_In + "')", con);
+                i = cmd.ExecuteNonQuery();
+            }            
+            con.Close();
+            return i;
+        }
+        public int TimeInReInsert(clsBE BE_In, DateTime pDate_In, DateTime pTime_In)
+        {
+            con.Open();
+            int i = 0;
+            String pUserName = BE_In.UserName;
+            int pUserId = BE_In.UserId;
+            SqlCommand cmd = new SqlCommand("INSERT INTO tblUserAttendanceDetails (fldUserId, fldUserName, fldLoginDate, fldLoginTime) values ('" + pUserId + "','" + pUserName + "',' " + pDate_In + "', '" + pTime_In + "')", con);
+            i = cmd.ExecuteNonQuery();           
+            con.Close();
+            return i;
+        }
+        public int TimeOutInsert(clsBE BE_In, DateTime pDate_In, DateTime pTime_In, DateTime pLastLoginTime_In)
+        {
+            con.Open();
+            int i = 0;
+            String pUserName = BE_In.UserName;
+            SqlCommand cmd = new SqlCommand("update tblUserAttendance set fldLogoutTime='" + pTime_In + "' where fldUserName='" + pUserName + "' and fldLoginDate='" + pDate_In + "'", con);
+            i = cmd.ExecuteNonQuery();
+            if (i > 0)
+            {
+                cmd = new SqlCommand("update tblUserAttendanceDetails set fldLogoutTime='" + pTime_In + "' where fldUserName='" + pUserName + "' and fldLoginDate='" + pDate_In + "' and fldLoginTime='"+ pLastLoginTime_In + "'", con);
+                i = cmd.ExecuteNonQuery();
+            }
             con.Close();
             return i;
         }

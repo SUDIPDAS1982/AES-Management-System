@@ -42,7 +42,14 @@ namespace BALayer
         }
         public int IsUserLoggedIn(clsBE BE_In)
         {
-            return mDA.IsUserLoggedIn(BE_In);
+            DateTime pDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            return mDA.IsUserLoggedIn(BE_In, pDate);
+        }
+        public int IsUserLoggedOut(clsBE BE_In)
+        {
+            DateTime pDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            DateTime pTime = Convert.ToDateTime(mDA.GetMaxLogInTime(BE_In, pDate));
+            return mDA.IsUserLoggedOut(BE_In, pDate, pTime);
         }
         public string GetUserId(clsBE BE_In)
         {
@@ -55,6 +62,13 @@ namespace BALayer
             pTime_Out = pTime;
             return mDA.TimeInInsert(BE_In, pDate, pTime);
         }
+        public int TimeInReInsert(clsBE BE_In, ref DateTime pTime_Out)
+        {
+            DateTime pDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            DateTime pTime = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
+            pTime_Out = pTime;
+            return mDA.TimeInReInsert(BE_In, pDate, pTime);
+        }
         public string IsUserActive(clsBE BE_In)
         {
             return mDA.IsUserActive(BE_In);
@@ -64,7 +78,8 @@ namespace BALayer
             DateTime pDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             DateTime pTime = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
             pTime_Out = pTime;
-            return mDA.TimeOutInsert(BE_In, pDate, pTime);
+            DateTime pLastLoginTime = Convert.ToDateTime(mDA.GetMaxLogInTime(BE_In, pDate));
+            return mDA.TimeOutInsert(BE_In, pDate, pTime, pLastLoginTime);
         }
     }
 }
