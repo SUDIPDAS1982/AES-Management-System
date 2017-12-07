@@ -27,24 +27,31 @@ namespace AES_Management_System
             Program.gBE.Password = txtPassword.Text;
             if(mBA.UserLogin(Program.gBE) >0)
             {
-                if(mBA.IsAdmin(Program.gBE) =="ADMIN")
+                if(Convert.ToBoolean(mBA.IsUserActive(Program.gBE))==true)
                 {
-                    MessageBox.Show("Login success.");
-                    this.Hide();
-                    frmAdmin pFrmAdmin = new frmAdmin();
-                    pFrmAdmin.ShowDialog();
+                    if (mBA.IsAdmin(Program.gBE) == "ADMIN")
+                    {
+                        MessageBox.Show("Login success.");
+                        this.Hide();
+                        frmAdmin pFrmAdmin = new frmAdmin();
+                        pFrmAdmin.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Login success.");
+                        this.Hide();
+                        frmEmployee pFrmEmployee = new frmEmployee();
+                        pFrmEmployee.ShowDialog();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Login success.");
-                    this.Hide();
-                    frmEmployee pFrmEmployee = new frmEmployee();
-                    pFrmEmployee.ShowDialog();
+                    MessageBox.Show("User has been Deactivated!!");
                 }
             }
             else
             {
-                MessageBox.Show("Invalid Login please check username and password");
+                MessageBox.Show("Invalid Login!! Please check username and password");
             }
         }
 

@@ -23,7 +23,7 @@ namespace DALayer
             string pUserName = BE_In.UserName;
             string pPassword = BE_In.Password;
             
-            SqlCommand cmd = new SqlCommand("select UserName,UserPassword from tblUserLogin where UserName='" + pUserName + "'and UserPassword='" + pPassword + "'", con);
+            SqlCommand cmd = new SqlCommand("select fldUserName,fldUserPassword from tblUserLogin where fldUserName='" + pUserName + "'and fldUserPassword='" + pPassword + "'", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -37,7 +37,7 @@ namespace DALayer
             con.Open();
             string pUserName = BE_In.UserName;
             string pPassword = BE_In.Password;
-            SqlCommand cmd = new SqlCommand("select UserRole from tblUserLogin where UserName='" + pUserName + "'and UserPassword='" + pPassword + "'", con);
+            SqlCommand cmd = new SqlCommand("select fldUserRole from tblUserLogin where fldUserName='" + pUserName + "'and fldUserPassword='" + pPassword + "'", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -50,7 +50,7 @@ namespace DALayer
             con.Open();
             string pUserName = BE_In.UserName;
             string pPassword = BE_In.Password;
-            SqlCommand cmd = new SqlCommand("select fullname from tblUserDetails where id in (select UserId from tblUserLogin where UserName='" + pUserName + "')", con);
+            SqlCommand cmd = new SqlCommand("select fldFullName from tblUserDetails where fldId in (select fldUserId from tblUserLogin where fldUserName='" + pUserName + "')", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -62,7 +62,7 @@ namespace DALayer
         {
             Dictionary<string, string> pUserIdName = new Dictionary<string, string>();
             con.Open();
-            SqlCommand cmd = new SqlCommand("select id, fullname from tblUserDetails", con);
+            SqlCommand cmd = new SqlCommand("select fldId, fldFullName from tblUserDetails", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -100,7 +100,7 @@ namespace DALayer
             List<List<string>> pSingleUserDetails = new List<List<string>>();
             con.Open();
             int pUserId = BE_In.UserId;
-            SqlCommand cmd = new SqlCommand("select * from tblUserDetails where id='" + pUserId + "'", con);
+            SqlCommand cmd = new SqlCommand("select * from tblUserDetails where fldId='" + pUserId + "'", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -116,13 +116,13 @@ namespace DALayer
             con.Close();
             return pSingleUserDetails;
         }
-        public int IsLoggedIn(clsBE BE_In)
+        public int IsUserLoggedIn(clsBE BE_In)
         //==============================
         {
             con.Open();
             string pUserName = BE_In.UserName;
             DateTime pLoginDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-            string pSQL = "select username from tbluserattendance where logindate='" + pLoginDate + "' and userid in (select UserId from tblUserLogin where UserName='" + pUserName + "')";
+            string pSQL = "select fldUserName from tblUserAttendance where fldLoginDate='" + pLoginDate + "' and fldUserId in (select fldUserId from tblUserLogin where fldUserName='" + pUserName + "')";
             SqlCommand cmd = new SqlCommand(pSQL, con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -135,12 +135,44 @@ namespace DALayer
         {
             con.Open();
             string pUserName = BE_In.UserName;
-            SqlCommand cmd = new SqlCommand("select userid from tblUserLogin where username='" + pUserName + "'", con);
+            SqlCommand cmd = new SqlCommand("select fldUserId from tblUserLogin where fldUserName='" + pUserName + "'", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
             con.Close();
             return dt.Rows[0][0].ToString();
+        }
+        public int TimeInInsert(clsBE BE_In, DateTime pDate, DateTime pTime)
+        {
+            con.Open();
+            String pUserName = BE_In.UserName;
+            int pUserId = BE_In.UserId;
+            SqlCommand cmd = new SqlCommand("INSERT INTO tblUserAttendance (fldUserId, fldUserName, fldLoginDate, fldLoginTime) values ('"+pUserId+"','" + pUserName + "',' " +pDate + "', '" + pTime + "')", con);
+            int i = cmd.ExecuteNonQuery();
+            con.Close();
+            return i;
+        }
+        public string IsUserActive(clsBE BE_In)
+        //==============================
+        {
+            con.Open();
+            string pUserName = BE_In.UserName;
+            string pPassword = BE_In.Password;
+            SqlCommand cmd = new SqlCommand("select fldUserActive from tblUserLogin where fldUserName='" + pUserName + "'and fldUserPassword='" + pPassword + "'", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
+            return dt.Rows[0][0].ToString();
+        }
+        public int TimeOutInsert(clsBE BE_In, DateTime pDate, DateTime pTime)
+        {
+            con.Open();
+            String pUserName = BE_In.UserName;
+            SqlCommand cmd = new SqlCommand("update tblUserAttendance set fldLogoutTime='" + pTime + "' where fldUserName='" + pUserName + "' and fldLoginDate='" + pDate + "'", con);
+            int i = cmd.ExecuteNonQuery();
+            con.Close();
+            return i;
         }
     }
 }

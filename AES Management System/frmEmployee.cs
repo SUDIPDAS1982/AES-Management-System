@@ -27,7 +27,7 @@ namespace AES_Management_System
             lblInfo.Text="Welcome "+ pUserName + "";
             try
             {
-                if (mBA.IsLoggedIn(Program.gBE) > 0)
+                if (mBA.IsUserLoggedIn(Program.gBE) > 0)
                 {
                     cmdTimeOut.Enabled = true;
                     cmdTimeIn.Enabled = false;
@@ -47,8 +47,30 @@ namespace AES_Management_System
 
         private void cmdTimeIn_Click(object sender, EventArgs e)
         {
-            int pUserId = Convert.ToInt32(mBA.GetUserId(Program.gBE));
-            MessageBox.Show("'+pUserId+'");
+            Program.gBE.UserId = Convert.ToInt32(mBA.GetUserId(Program.gBE));
+            DateTime pTime = new DateTime();
+            if(mBA.TimeInInsert(Program.gBE, ref pTime)>0)
+            {
+                lblInfo.Text = "Your registered entry time is: " + pTime + "";
+                MessageBox.Show("Time In Done. ");
+                cmdTimeOut.Enabled = true;
+                cmdTimeIn.Enabled = false;
+            }      
+        }
+
+        private void cmdTimeOut_Click(object sender, EventArgs e)
+        {
+            DateTime pTime = new DateTime();
+            if (mBA.TimeOutInsert(Program.gBE, ref pTime) > 0)
+            {
+                lblInfo.Text = "Your registered exit time is: " + pTime + "";
+                MessageBox.Show("Time Out Done. ");                
+            }
+        }
+
+        private void cmdExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

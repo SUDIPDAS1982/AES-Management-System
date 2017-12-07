@@ -40,13 +40,31 @@ namespace BALayer
         {
             return mDA.GetSingleUserDetails(BE_In);
         }
-        public int IsLoggedIn(clsBE BE_In)
+        public int IsUserLoggedIn(clsBE BE_In)
         {
-            return mDA.IsLoggedIn(BE_In);
+            return mDA.IsUserLoggedIn(BE_In);
         }
         public string GetUserId(clsBE BE_In)
         {
             return mDA.GetUserId(BE_In);
+        }
+        public int TimeInInsert(clsBE BE_In, ref DateTime pTime_Out)
+        {
+            DateTime pDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            DateTime pTime = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
+            pTime_Out = pTime;
+            return mDA.TimeInInsert(BE_In, pDate, pTime);
+        }
+        public string IsUserActive(clsBE BE_In)
+        {
+            return mDA.IsUserActive(BE_In);
+        }
+        public int TimeOutInsert(clsBE BE_In, ref DateTime pTime_Out)
+        {
+            DateTime pDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            DateTime pTime = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
+            pTime_Out = pTime;
+            return mDA.TimeOutInsert(BE_In, pDate, pTime);
         }
     }
 }

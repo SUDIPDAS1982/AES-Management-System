@@ -53,7 +53,6 @@
             this.lblInfo.Size = new System.Drawing.Size(35, 13);
             this.lblInfo.TabIndex = 1;
             this.lblInfo.Text = "label1";
-            this.lblInfo.Visible = false;
             // 
             // cmdTimeIn
             // 
@@ -73,6 +72,7 @@
             this.cmdTimeOut.TabIndex = 3;
             this.cmdTimeOut.Text = "Time Out";
             this.cmdTimeOut.UseVisualStyleBackColor = true;
+            this.cmdTimeOut.Click += new System.EventHandler(this.cmdTimeOut_Click);
             // 
             // cmdAttendance
             // 
@@ -91,6 +91,7 @@
             this.cmdExit.TabIndex = 5;
             this.cmdExit.Text = "Exit";
             this.cmdExit.UseVisualStyleBackColor = true;
+            this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
             // 
             // frmEmployee
             // 
