@@ -107,10 +107,11 @@ namespace AES_Management_System
         {
             Application.Exit();
         }
-
         private void cmdAttendance_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frmAttendanceDetails pFrmAttendanceDetails = new frmAttendanceDetails();
+            pFrmAttendanceDetails.ShowDialog();
         }
     }
 }

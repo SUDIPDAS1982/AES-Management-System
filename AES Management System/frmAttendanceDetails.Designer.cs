@@ -1,0 +1,188 @@
+﻿namespace AES_Management_System
+{
+    partial class frmAttendanceDetails
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.cmdExit = new System.Windows.Forms.Button();
+            this.grdAttendanceDetails = new System.Windows.Forms.DataGridView();
+            this.cmdShow = new System.Windows.Forms.Button();
+            this.lblToDate = new System.Windows.Forms.Label();
+            this.dtpToDate = new System.Windows.Forms.DateTimePicker();
+            this.lblFromDate = new System.Windows.Forms.Label();
+            this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.grdAttendanceDetails)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // cmdExit
+            // 
+            this.cmdExit.Location = new System.Drawing.Point(600, 93);
+            this.cmdExit.Name = "cmdExit";
+            this.cmdExit.Size = new System.Drawing.Size(75, 23);
+            this.cmdExit.TabIndex = 13;
+            this.cmdExit.Text = "Exit";
+            this.cmdExit.UseVisualStyleBackColor = true;
+            this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
+            // 
+            // grdAttendanceDetails
+            // 
+            this.grdAttendanceDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdAttendanceDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6});
+            this.grdAttendanceDetails.Location = new System.Drawing.Point(36, 122);
+            this.grdAttendanceDetails.Name = "grdAttendanceDetails";
+            this.grdAttendanceDetails.Size = new System.Drawing.Size(764, 309);
+            this.grdAttendanceDetails.TabIndex = 12;
+            this.grdAttendanceDetails.Visible = false;
+            this.grdAttendanceDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdAttendanceDetails_CellContentClick);
+            // 
+            // cmdShow
+            // 
+            this.cmdShow.Location = new System.Drawing.Point(266, 93);
+            this.cmdShow.Name = "cmdShow";
+            this.cmdShow.Size = new System.Drawing.Size(75, 23);
+            this.cmdShow.TabIndex = 11;
+            this.cmdShow.Text = "Show";
+            this.cmdShow.UseVisualStyleBackColor = true;
+            this.cmdShow.Click += new System.EventHandler(this.cmdShow_Click);
+            // 
+            // lblToDate
+            // 
+            this.lblToDate.AutoSize = true;
+            this.lblToDate.Location = new System.Drawing.Point(503, 46);
+            this.lblToDate.Name = "lblToDate";
+            this.lblToDate.Size = new System.Drawing.Size(46, 13);
+            this.lblToDate.TabIndex = 10;
+            this.lblToDate.Text = "To Date";
+            // 
+            // dtpToDate
+            // 
+            this.dtpToDate.Location = new System.Drawing.Point(600, 46);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpToDate.TabIndex = 9;
+            // 
+            // lblFromDate
+            // 
+            this.lblFromDate.AutoSize = true;
+            this.lblFromDate.Location = new System.Drawing.Point(46, 46);
+            this.lblFromDate.Name = "lblFromDate";
+            this.lblFromDate.Size = new System.Drawing.Size(56, 13);
+            this.lblFromDate.TabIndex = 8;
+            this.lblFromDate.Text = "From Date";
+            // 
+            // dtpFromDate
+            // 
+            this.dtpFromDate.Location = new System.Drawing.Point(141, 46);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpFromDate.TabIndex = 7;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "User Id";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "User Name";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 130;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Login Date";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 130;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Login Time";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 130;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Logout Time";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 130;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Details";
+            this.Column6.Name = "Column6";
+            this.Column6.Text = "Show";
+            this.Column6.UseColumnTextForButtonValue = true;
+            // 
+            // frmAttendanceDetails
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(902, 468);
+            this.Controls.Add(this.cmdExit);
+            this.Controls.Add(this.grdAttendanceDetails);
+            this.Controls.Add(this.cmdShow);
+            this.Controls.Add(this.lblToDate);
+            this.Controls.Add(this.dtpToDate);
+            this.Controls.Add(this.lblFromDate);
+            this.Controls.Add(this.dtpFromDate);
+            this.Name = "frmAttendanceDetails";
+            this.Text = "Attendance Details";
+            ((System.ComponentModel.ISupportInitialize)(this.grdAttendanceDetails)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button cmdExit;
+        private System.Windows.Forms.DataGridView grdAttendanceDetails;
+        private System.Windows.Forms.Button cmdShow;
+        private System.Windows.Forms.Label lblToDate;
+        private System.Windows.Forms.DateTimePicker dtpToDate;
+        private System.Windows.Forms.Label lblFromDate;
+        private System.Windows.Forms.DateTimePicker dtpFromDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewButtonColumn Column6;
+    }
+}

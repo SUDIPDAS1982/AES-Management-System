@@ -81,5 +81,9 @@ namespace BALayer
             DateTime pLastLoginTime = Convert.ToDateTime(mDA.GetMaxLogInTime(BE_In, pDate));
             return mDA.TimeOutInsert(BE_In, pDate, pTime, pLastLoginTime);
         }
+        public List<List<string>> GetSingleUserAttendanceDetails(clsBE BE_In, DateTime pFromDate_In, DateTime pToDate_In)
+        {
+            return mDA.GetSingleUserAttendanceDetails(BE_In, pFromDate_In, pToDate_In);
+        }
     }
 }

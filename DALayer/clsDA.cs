@@ -229,5 +229,27 @@ namespace DALayer
             con.Close();
             return i;
         }
+        public List<List<string>> GetSingleUserAttendanceDetails(clsBE BE_In, DateTime pFromDate_In, DateTime pToDate_In)
+        //==================================================================================================================
+        {
+            List<List<string>> pSingleUserAttendanceDetails = new List<List<string>>();
+            con.Open();
+            String pUserName = BE_In.UserName;
+            SqlCommand cmd = new SqlCommand("select fldUserId, fldUserName, fldLoginDate, fldLoginTime, fldLogoutTime from tblUserAttendance where fldUserName='" + pUserName + "' and fldLoginDate between '" + pFromDate_In + "' and '" + pToDate_In + "'", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                List<string> pCol = new List<string>();
+                for (int j = 0; j < dt.Columns.Count; j++)
+                {
+                    pCol.Add(dt.Rows[i][j].ToString());
+                }
+                pSingleUserAttendanceDetails.Add(pCol);
+            }
+            con.Close();
+            return pSingleUserAttendanceDetails;
+        }
     }
 }
