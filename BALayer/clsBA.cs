@@ -55,35 +55,39 @@ namespace BALayer
         {
             return mDA.GetUserId(BE_In);
         }
-        public int TimeInInsert(clsBE BE_In, ref DateTime pTime_Out)
+        public int TimeInInsert(clsBE BE_In, string pRemarks_In, ref DateTime pTime_Out)
         {
             DateTime pDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             DateTime pTime = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
             pTime_Out = pTime;
-            return mDA.TimeInInsert(BE_In, pDate, pTime);
+            return mDA.TimeInInsert(BE_In, pDate, pTime, pRemarks_In);
         }
-        public int TimeInReInsert(clsBE BE_In, ref DateTime pTime_Out)
+        public int TimeInReInsert(clsBE BE_In, string pRemarks_In, ref DateTime pTime_Out)
         {
             DateTime pDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             DateTime pTime = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
             pTime_Out = pTime;
-            return mDA.TimeInReInsert(BE_In, pDate, pTime);
+            return mDA.TimeInReInsert(BE_In, pDate, pTime, pRemarks_In);
         }
         public string IsUserActive(clsBE BE_In)
         {
             return mDA.IsUserActive(BE_In);
         }
-        public int TimeOutInsert(clsBE BE_In, ref DateTime pTime_Out)
+        public int TimeOutInsert(clsBE BE_In, string pRemarks_In, ref DateTime pTime_Out)
         {
             DateTime pDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             DateTime pTime = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
             pTime_Out = pTime;
             DateTime pLastLoginTime = Convert.ToDateTime(mDA.GetMaxLogInTime(BE_In, pDate));
-            return mDA.TimeOutInsert(BE_In, pDate, pTime, pLastLoginTime);
+            return mDA.TimeOutInsert(BE_In, pDate, pTime, pLastLoginTime, pRemarks_In);
         }
-        public List<List<string>> GetSingleUserAttendanceDetails(clsBE BE_In, DateTime pFromDate_In, DateTime pToDate_In)
+        public List<List<string>> GetSingleUserAttendanceSummary(clsBE BE_In, DateTime pFromDate_In, DateTime pToDate_In)
         {
-            return mDA.GetSingleUserAttendanceDetails(BE_In, pFromDate_In, pToDate_In);
+            return mDA.GetSingleUserAttendanceSummary(BE_In, pFromDate_In, pToDate_In);
         }
-    }
+		public List<List<string>> GetSingleUserAttendanceDetails(clsBE BE_In, DateTime pLoginDate_In)
+		{
+			return mDA.GetSingleUserAttendanceDetails(BE_In, pLoginDate_In);
+		}
+	}
 }

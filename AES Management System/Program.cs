@@ -11,10 +11,11 @@ namespace AES_Management_System
     static class Program
     {
         public static clsBE gBE = new clsBE();
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
+		
+		/// <summary>
+		/// The main entry point for the application.
+		/// </summary>
+		[STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();

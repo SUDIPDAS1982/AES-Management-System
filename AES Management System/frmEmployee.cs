@@ -56,29 +56,32 @@ namespace AES_Management_System
         private void cmdTimeIn_Click(object sender, EventArgs e)
         {
             Program.gBE.UserId = Convert.ToInt32(mBA.GetUserId(Program.gBE));
+			string pRemarks = txtRemarks.Text;
             DateTime pTime = new DateTime();
             if (mBA.IsUserLoggedIn(Program.gBE) > 0)
             {
                 if (mBA.IsUserLoggedOut(Program.gBE) > 0)
                 {
-                    if (mBA.TimeInReInsert(Program.gBE, ref pTime) > 0)
+                    if (mBA.TimeInReInsert(Program.gBE, pRemarks, ref pTime) > 0)
                     {
                         lblInfo.Text = "Your registered Re-entry time is: " + pTime + "";
                         MessageBox.Show("Time In Done. ");
                         cmdTimeOut.Enabled = true;
                         cmdTimeIn.Enabled = false;
+						txtRemarks.Text = "";
                     }
                 }
             }
             else
             {
-                if (mBA.TimeInInsert(Program.gBE, ref pTime) > 0)
+                if (mBA.TimeInInsert(Program.gBE, pRemarks, ref pTime) > 0)
                 {
                     lblInfo.Text = "Your registered entry time is: " + pTime + "";
                     MessageBox.Show("Time In Done. ");
                     cmdTimeOut.Enabled = true;
                     cmdTimeIn.Enabled = false;
-                }
+					txtRemarks.Text = "";
+				}
             }
 
 
@@ -87,18 +90,20 @@ namespace AES_Management_System
 
         private void cmdTimeOut_Click(object sender, EventArgs e)
         {
-            DateTime pTime = new DateTime();
+			string pRemarks = txtRemarks.Text;
+			DateTime pTime = new DateTime();
             if (mBA.IsUserLoggedIn(Program.gBE) > 0)
             {
                 if (mBA.IsUserLoggedOut(Program.gBE) == 0)
                 {
-                    if (mBA.TimeOutInsert(Program.gBE, ref pTime) > 0)
+                    if (mBA.TimeOutInsert(Program.gBE, pRemarks, ref pTime) > 0)
                     {
                         lblInfo.Text = "Your registered exit time is: " + pTime + "";
                         MessageBox.Show("Time Out Done. ");
                         cmdTimeOut.Enabled = false;
                         cmdTimeIn.Enabled = true;
-                    }
+						txtRemarks.Text = "";
+					}
                 }
             }            
         }
@@ -107,10 +112,10 @@ namespace AES_Management_System
         {
             Application.Exit();
         }
-        private void cmdAttendance_Click(object sender, EventArgs e)
+        private void CmdAttendanceSummary_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmAttendanceDetails pFrmAttendanceDetails = new frmAttendanceDetails();
+            frmAttendanceSummary pFrmAttendanceDetails = new frmAttendanceSummary();
             pFrmAttendanceDetails.ShowDialog();
         }
     }

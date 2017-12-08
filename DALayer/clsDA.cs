@@ -122,7 +122,7 @@ namespace DALayer
             con.Open();
             string pUserName = BE_In.UserName;
             DateTime pLoginDate = pDate_In;
-            string pSQL = "select fldUserName from tblUserAttendance where fldLoginDate='" + pLoginDate + "' and fldUserId in (select fldUserId from tblUserLogin where fldUserName='" + pUserName + "')";
+            string pSQL = "select fldUserName from tblUserAttendanceSummary where fldLoginDate='" + pLoginDate + "' and fldUserId in (select fldUserId from tblUserLogin where fldUserName='" + pUserName + "')";
             SqlCommand cmd = new SqlCommand(pSQL, con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -187,55 +187,58 @@ namespace DALayer
             con.Close();
             return dt.Rows[0][0].ToString();
         }
-        public int TimeInInsert(clsBE BE_In, DateTime pDate_In, DateTime pTime_In)
+        public int TimeInInsert(clsBE BE_In, DateTime pDate_In, DateTime pTime_In, string pRemarks_In)
+			//==========================================================================================
         {
             con.Open();
             int i = 0;
             String pUserName = BE_In.UserName;
             int pUserId = BE_In.UserId;
-            SqlCommand cmd = new SqlCommand("INSERT INTO tblUserAttendance (fldUserId, fldUserName, fldLoginDate, fldLoginTime) values ('"+pUserId+"','" + pUserName + "',' " +pDate_In + "', '" + pTime_In + "')", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO tblUserAttendanceSummary (fldUserId, fldUserName, fldLoginDate, fldLoginTime) values ('"+pUserId+"','" + pUserName + "',' " +pDate_In + "', '" + pTime_In + "')", con);
             i = cmd.ExecuteNonQuery();
             if(i > 0)
             {
-                cmd = new SqlCommand("INSERT INTO tblUserAttendanceDetails (fldUserId, fldUserName, fldLoginDate, fldLoginTime) values ('" + pUserId + "','" + pUserName + "',' " + pDate_In + "', '" + pTime_In + "')", con);
+                cmd = new SqlCommand("INSERT INTO tblUserAttendanceDetails (fldUserId, fldUserName, fldLoginDate, fldLoginTime, fldLoginRemarks) values ('" + pUserId + "','" + pUserName + "',' " + pDate_In + "', '" + pTime_In + "', '"+pRemarks_In+"')", con);
                 i = cmd.ExecuteNonQuery();
             }            
             con.Close();
             return i;
         }
-        public int TimeInReInsert(clsBE BE_In, DateTime pDate_In, DateTime pTime_In)
+        public int TimeInReInsert(clsBE BE_In, DateTime pDate_In, DateTime pTime_In, string pRemarks_In)
+			//=================================================================================================
         {
             con.Open();
             int i = 0;
             String pUserName = BE_In.UserName;
             int pUserId = BE_In.UserId;
-            SqlCommand cmd = new SqlCommand("INSERT INTO tblUserAttendanceDetails (fldUserId, fldUserName, fldLoginDate, fldLoginTime) values ('" + pUserId + "','" + pUserName + "',' " + pDate_In + "', '" + pTime_In + "')", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO tblUserAttendanceDetails (fldUserId, fldUserName, fldLoginDate, fldLoginTime, fldLoginRemarks) values ('" + pUserId + "','" + pUserName + "',' " + pDate_In + "', '" + pTime_In + "', '" + pRemarks_In + "')", con);
             i = cmd.ExecuteNonQuery();           
             con.Close();
             return i;
         }
-        public int TimeOutInsert(clsBE BE_In, DateTime pDate_In, DateTime pTime_In, DateTime pLastLoginTime_In)
+        public int TimeOutInsert(clsBE BE_In, DateTime pDate_In, DateTime pTime_In, DateTime pLastLoginTime_In, string pRemarks_In)
+			//========================================================================================================================
         {
             con.Open();
             int i = 0;
             String pUserName = BE_In.UserName;
-            SqlCommand cmd = new SqlCommand("update tblUserAttendance set fldLogoutTime='" + pTime_In + "' where fldUserName='" + pUserName + "' and fldLoginDate='" + pDate_In + "'", con);
+            SqlCommand cmd = new SqlCommand("update tblUserAttendanceSummary set fldLogoutTime='" + pTime_In + "' where fldUserName='" + pUserName + "' and fldLoginDate='" + pDate_In + "'", con);
             i = cmd.ExecuteNonQuery();
             if (i > 0)
             {
-                cmd = new SqlCommand("update tblUserAttendanceDetails set fldLogoutTime='" + pTime_In + "' where fldUserName='" + pUserName + "' and fldLoginDate='" + pDate_In + "' and fldLoginTime='"+ pLastLoginTime_In + "'", con);
+                cmd = new SqlCommand("update tblUserAttendanceDetails set fldLogoutTime='" + pTime_In + "' , fldLogoutRemarks='"+pRemarks_In+"' where fldUserName='" + pUserName + "' and fldLoginDate='" + pDate_In + "' and fldLoginTime='"+ pLastLoginTime_In + "'", con);
                 i = cmd.ExecuteNonQuery();
             }
             con.Close();
             return i;
         }
-        public List<List<string>> GetSingleUserAttendanceDetails(clsBE BE_In, DateTime pFromDate_In, DateTime pToDate_In)
+        public List<List<string>> GetSingleUserAttendanceSummary(clsBE BE_In, DateTime pFromDate_In, DateTime pToDate_In)
         //==================================================================================================================
         {
-            List<List<string>> pSingleUserAttendanceDetails = new List<List<string>>();
+            List<List<string>> pSingleUserAttendanceSummary = new List<List<string>>();
             con.Open();
             String pUserName = BE_In.UserName;
-            SqlCommand cmd = new SqlCommand("select fldUserId, fldUserName, fldLoginDate, fldLoginTime, fldLogoutTime from tblUserAttendance where fldUserName='" + pUserName + "' and fldLoginDate between '" + pFromDate_In + "' and '" + pToDate_In + "'", con);
+            SqlCommand cmd = new SqlCommand("select fldUserId, fldUserName, fldLoginDate, fldLoginTime, fldLogoutTime from tblUserAttendanceSummary where fldUserName='" + pUserName + "' and fldLoginDate between '" + pFromDate_In + "' and '" + pToDate_In + "'", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -246,10 +249,32 @@ namespace DALayer
                 {
                     pCol.Add(dt.Rows[i][j].ToString());
                 }
-                pSingleUserAttendanceDetails.Add(pCol);
+                pSingleUserAttendanceSummary.Add(pCol);
             }
             con.Close();
-            return pSingleUserAttendanceDetails;
+            return pSingleUserAttendanceSummary;
         }
-    }
+		public List<List<string>> GetSingleUserAttendanceDetails(clsBE BE_In, DateTime pLoginDate_In)
+		//============================================================================================
+		{
+			List<List<string>> pSingleUserAttendanceDetails = new List<List<string>>();
+			con.Open();
+			String pUserName = BE_In.UserName;
+			SqlCommand cmd = new SqlCommand("select fldUserName, fldLoginDate, fldLoginTime, fldLoginRemarks, fldLogoutTime, fldLogoutRemarks from tblUserAttendanceDetails where fldUserName='" + pUserName + "' and fldLoginDate='" + pLoginDate_In + "'", con);
+			SqlDataAdapter da = new SqlDataAdapter(cmd);
+			DataTable dt = new DataTable();
+			da.Fill(dt);
+			for (int i = 0; i < dt.Rows.Count; i++)
+			{
+				List<string> pCol = new List<string>();
+				for (int j = 0; j < dt.Columns.Count; j++)
+				{
+					pCol.Add(dt.Rows[i][j].ToString());
+				}
+				pSingleUserAttendanceDetails.Add(pCol);
+			}
+			con.Close();
+			return pSingleUserAttendanceDetails;
+		}
+	}
 }

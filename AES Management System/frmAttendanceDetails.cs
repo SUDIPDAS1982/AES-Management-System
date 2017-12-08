@@ -12,44 +12,35 @@ using BALayer;
 
 namespace AES_Management_System
 {
-    public partial class frmAttendanceDetails : Form
-    {
-        public clsBA mBA = new clsBA();
-        public frmAttendanceDetails()
-        {
-            InitializeComponent();
-        }
+	public partial class frmAttendanceDetails : Form
+	{
+		public clsBA mBA = new clsBA();
+		public frmAttendanceDetails(DateTime pLoginDate_In)
+		{
+			InitializeComponent();
+			grdAttendanceDetails.Rows.Clear();
+			grdAttendanceDetails.Visible = true;
+			List<List<string>> pSingleUserAttendanceDetails = new List<List<string>>();
+			pSingleUserAttendanceDetails = mBA.GetSingleUserAttendanceDetails(Program.gBE, pLoginDate_In);
+			for (int i = 0; i < pSingleUserAttendanceDetails.Count; i++)
+			{
+				grdAttendanceDetails.Rows.Add();
+				for (int j = 0; j < pSingleUserAttendanceDetails[i].Count; j++)
+				{
+					grdAttendanceDetails.Rows[i].Cells[j].Value = pSingleUserAttendanceDetails[i][j].ToString();
+				}
+				grdAttendanceDetails.AllowUserToAddRows = false;
+			}
+		}
 
-        private void cmdExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+		private void lnklblBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			this.Hide();
+		}
 
-        private void cmdShow_Click(object sender, EventArgs e)
-        {
-            grdAttendanceDetails.Rows.Clear();
-            grdAttendanceDetails.Visible = true;
-            DateTime pFromDate = Convert.ToDateTime(dtpFromDate.Text);
-            DateTime pToDate = Convert.ToDateTime(dtpToDate.Text);
-            List<List<string>> pSingleUserAttendanceDetails = new List<List<string>>();
-            pSingleUserAttendanceDetails = mBA.GetSingleUserAttendanceDetails(Program.gBE, pFromDate, pToDate);
-            for (int i = 0; i < pSingleUserAttendanceDetails.Count; i++)
-            {
-                grdAttendanceDetails.Rows.Add();
-                for (int j = 0; j < pSingleUserAttendanceDetails[i].Count; j++)
-                {
-                    grdAttendanceDetails.Rows[i].Cells[j].Value = pSingleUserAttendanceDetails[i][j].ToString();
-                }
-                grdAttendanceDetails.AllowUserToAddRows = false;
-            }
-        }
-
-        private void grdAttendanceDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 5)
-            {
-                MessageBox.Show("sudip");
-            }
-        }
-    }
+			private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			Application.Exit();
+		}
+	}
 }
