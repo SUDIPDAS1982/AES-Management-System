@@ -13,15 +13,22 @@ using BALayer;
 namespace AES_Management_System
 {
     public partial class frmLogin : Form
+		//===================================
     {
         public clsBA mBA = new clsBA();
-        //public BE pBE = new BE();
-        public frmLogin()
+		//public BE pBE = new BE();
+
+		#region "Constructor:"
+		public frmLogin()
+			//================
         {
             InitializeComponent();
         }
+		#endregion
 
-        private void cmdLogin_Click(object sender, EventArgs e)
+		#region "Command Button:"
+		private void cmdLogin_Click(object sender, EventArgs e)
+			//======================================================
         {
             Program.gBE.UserName = txtUserName.Text;
             Program.gBE.Password = txtPassword.Text;
@@ -56,8 +63,10 @@ namespace AES_Management_System
         }
 
         private void cmdExit_Click(object sender, EventArgs e)
+			//=====================================================
         {
             Application.Exit();
         }
-    }
+#endregion
+	}
 }

@@ -13,9 +13,13 @@ using BALayer;
 namespace AES_Management_System
 {
 	public partial class frmAttendanceDetails : Form
+		//============================================
 	{
 		public clsBA mBA = new clsBA();
+
+		#region "Constructor:"
 		public frmAttendanceDetails(DateTime pLoginDate_In)
+			//===============================================
 		{
 			InitializeComponent();
 			grdAttendanceDetails.Rows.Clear();
@@ -32,15 +36,20 @@ namespace AES_Management_System
 				grdAttendanceDetails.AllowUserToAddRows = false;
 			}
 		}
+		#endregion
 
+		#region "Link Label:"
 		private void lnklblBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+			//=================================================================================
 		{
 			this.Hide();
 		}
 
 			private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+			//=====================================================================================
 		{
 			Application.Exit();
 		}
+#endregion
 	}
 }

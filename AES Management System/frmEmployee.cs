@@ -15,12 +15,19 @@ namespace AES_Management_System
     public partial class frmEmployee : Form
     {
         public clsBA mBA = new clsBA();
-        public frmEmployee()
+
+		#region "Constructor:"
+		public frmEmployee()
+			//================
         {
             InitializeComponent();
         }
+#endregion
 
-        private void frmEmployee_Load(object sender, EventArgs e)
+		#region "Load:"
+
+		private void frmEmployee_Load(object sender, EventArgs e)
+			//======================================================
         {
             string pUserName = mBA.SelectUserName(Program.gBE);
             lblWelcome.Text = "Login As: " + pUserName + "";
@@ -52,8 +59,11 @@ namespace AES_Management_System
             }
             
         }
+		#endregion
 
-        private void cmdTimeIn_Click(object sender, EventArgs e)
+		#region "Command Button:"
+		private void cmdTimeIn_Click(object sender, EventArgs e)
+			//=====================================================
         {
             Program.gBE.UserId = Convert.ToInt32(mBA.GetUserId(Program.gBE));
 			string pRemarks = txtRemarks.Text;
@@ -82,13 +92,11 @@ namespace AES_Management_System
                     cmdTimeIn.Enabled = false;
 					txtRemarks.Text = "";
 				}
-            }
-
-
-                  
+            }                  
         }
 
         private void cmdTimeOut_Click(object sender, EventArgs e)
+			//======================================================
         {
 			string pRemarks = txtRemarks.Text;
 			DateTime pTime = new DateTime();
@@ -109,14 +117,17 @@ namespace AES_Management_System
         }
 
         private void cmdExit_Click(object sender, EventArgs e)
+			//===================================================
         {
             Application.Exit();
         }
         private void CmdAttendanceSummary_Click(object sender, EventArgs e)
+			//=================================================================
         {
             this.Hide();
             frmAttendanceSummary pFrmAttendanceDetails = new frmAttendanceSummary();
             pFrmAttendanceDetails.ShowDialog();
         }
-    }
+#endregion
+	}
 }

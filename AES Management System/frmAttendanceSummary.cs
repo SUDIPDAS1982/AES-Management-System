@@ -13,19 +13,27 @@ using BALayer;
 namespace AES_Management_System
 {
     public partial class frmAttendanceSummary : Form
+		//==============================================
     {
         public clsBA mBA = new clsBA();
-        public frmAttendanceSummary()
+
+		#region "Constructor:"
+		public frmAttendanceSummary()
+			//============================
         {
             InitializeComponent();
         }
+		#endregion
 
-        private void cmdExit_Click(object sender, EventArgs e)
+		#region "Command Button:"
+		private void cmdExit_Click(object sender, EventArgs e)
+			//===================================================
         {
             Application.Exit();
         }
 
         private void cmdShow_Click(object sender, EventArgs e)
+			//====================================================
         {
             grdAttendanceSummary.Rows.Clear();
             grdAttendanceSummary.Visible = true;
@@ -43,8 +51,11 @@ namespace AES_Management_System
                 grdAttendanceSummary.AllowUserToAddRows = false;
             }
         }
+		#endregion
 
-        private void grdAttendanceDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		#region "Grid Cell Command Button:"
+		private void grdAttendanceDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
+			//==============================================================================================
         {
             if (e.ColumnIndex == 5)
             {
@@ -54,5 +65,6 @@ namespace AES_Management_System
 				pFrmAttendanceHistory.ShowDialog();
 			}
         }
-    }
+#endregion
+	}
 }

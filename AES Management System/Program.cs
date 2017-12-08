@@ -16,11 +16,15 @@ namespace AES_Management_System
 		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
-        static void Main()
+
+		#region "Mod Main:"
+		static void Main()
+			//=================
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());
         }
-    }
+#endregion
+	}
 }

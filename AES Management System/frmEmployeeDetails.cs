@@ -12,37 +12,50 @@ using BALayer;
 namespace AES_Management_System
 {
     public partial class frmEmployeeDetails : Form
+		//============================================
     {
         public clsBA mBA = new clsBA();
 
-        public frmEmployeeDetails()
+		#region "Constructor:"
+		public frmEmployeeDetails()
+			//=========================
         {
             InitializeComponent();
         }
+		#endregion
 
-        private void optAll_CheckedChanged(object sender, EventArgs e)
+		#region "Load:"
+		private void frmEmployeeDetails_Load(object sender, EventArgs e)
+		//================================================================
+		{
+			Dictionary<string, string> pUserIdName = new Dictionary<string, string>();
+			pUserIdName = mBA.GetUserIdName();
+			for (int i = 0; i < pUserIdName.Count; i++)
+			{
+				cmbUser.DataSource = new BindingSource(pUserIdName, null);
+				cmbUser.ValueMember = "key";
+				cmbUser.DisplayMember = "value";
+			}
+		}
+		#endregion
+
+		#region "Radio Button:"
+		private void optAll_CheckedChanged(object sender, EventArgs e)
+			//=============================================================
         {
             cmbUser.Visible = false;
         }
 
         private void optIndividualEmployee_CheckedChanged(object sender, EventArgs e)
+			//===============================================================================
         {
             cmbUser.Visible = true;
         }
+		#endregion
 
-        private void frmEmployeeDetails_Load(object sender, EventArgs e)
-        {
-            Dictionary<string, string> pUserIdName = new Dictionary<string, string>();
-            pUserIdName = mBA.GetUserIdName();
-            for (int i=0; i< pUserIdName.Count; i++)
-            {
-                cmbUser.DataSource = new BindingSource(pUserIdName, null);
-                cmbUser.ValueMember = "key";
-                cmbUser.DisplayMember = "value";
-            }            
-        }
-
-        private void cmdDisplay_Click(object sender, EventArgs e)
+		#region "Command Button:"
+		private void cmdDisplay_Click(object sender, EventArgs e)
+			//========================================================
         {
             grdEmployeeDetailDisplay.Rows.Clear();
             grdEmployeeDetailDisplay.Visible = true;
@@ -75,17 +88,22 @@ namespace AES_Management_System
                 }
             }
         }
+		#endregion
 
-        private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		#region "Link Label:"
+		private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+			//=================================================================================
         {
             Application.Exit();
         }
 
         private void lnklblBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+			//=================================================================================
         {
             this.Hide();
             frmAdmin pFrmAdmin = new frmAdmin();
             pFrmAdmin.ShowDialog();
         }
-    }
+#endregion
+	}
 }
