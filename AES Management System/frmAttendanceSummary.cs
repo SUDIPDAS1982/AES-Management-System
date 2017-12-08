@@ -37,7 +37,17 @@ namespace AES_Management_System
         {
             grdAttendanceSummary.Rows.Clear();
             grdAttendanceSummary.Visible = true;
-            DateTime pFromDate = Convert.ToDateTime(dtpFromDate.Text);
+			lblColorDefinition.Visible = true;
+			lblColorDefinition.Text = "Schedule time: Black, Grace Time: Dark Grey, Late: Orange, Half: Blue, Not Count: Red.";
+			DateTime pScheduleLoginTime = Convert.ToDateTime("2017 - 12 - 07 10:00:59.000");
+			DateTime pGraceLoginTime = Convert.ToDateTime("2017 - 12 - 07 10:15:59.000");
+			DateTime pLateLoginTime = Convert.ToDateTime("2017 - 12 - 07 11:00:59.000");
+			DateTime pHalfLoginTime = Convert.ToDateTime("2017 - 12 - 07 14:00:59.000");
+
+			DateTime pScheduleLogoutTime = Convert.ToDateTime("2017 - 12 - 01 18:30:00.000");
+			DateTime pHalfLogoutTime = Convert.ToDateTime("2017 - 12 - 01 14:30:00.000");
+
+			DateTime pFromDate = Convert.ToDateTime(dtpFromDate.Text);
             DateTime pToDate = Convert.ToDateTime(dtpToDate.Text);
             List<List<string>> pSingleUserAttendanceSummary = new List<List<string>>();
             pSingleUserAttendanceSummary = mBA.GetSingleUserAttendanceSummary(Program.gBE, pFromDate, pToDate);
@@ -46,7 +56,47 @@ namespace AES_Management_System
                 grdAttendanceSummary.Rows.Add();
                 for (int j = 0; j < pSingleUserAttendanceSummary[i].Count; j++)
                 {
-                    grdAttendanceSummary.Rows[i].Cells[j].Value = pSingleUserAttendanceSummary[i][j].ToString();
+					if (j == 3)
+					{
+						DateTime pLoginTime = Convert.ToDateTime(pSingleUserAttendanceSummary[i][j].ToString());						
+						if (pLoginTime.TimeOfDay > pHalfLoginTime.TimeOfDay)
+						{
+							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Red;
+						}
+						else if (pLoginTime.TimeOfDay > pLateLoginTime.TimeOfDay)
+						{
+							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Blue;
+						}
+						else if (pLoginTime.TimeOfDay > pGraceLoginTime.TimeOfDay)
+						{
+							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Orange;
+						}
+						else if (pLoginTime.TimeOfDay > pScheduleLoginTime.TimeOfDay)
+						{
+							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.DarkGray;
+						}
+						else
+						{
+							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Black;
+						}
+					}
+					if (j == 4)
+					{
+						DateTime pLogoutTime = Convert.ToDateTime(pSingleUserAttendanceSummary[i][j].ToString());
+						if (pLogoutTime.TimeOfDay < pHalfLogoutTime.TimeOfDay)
+						{
+							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Red;
+						}
+						else if (pLogoutTime.TimeOfDay < pScheduleLogoutTime.TimeOfDay)
+						{
+							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Blue;
+						}
+						else
+						{
+							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Black;
+						}
+					}
+					grdAttendanceSummary.Rows[i].Cells[j].Value = pSingleUserAttendanceSummary[i][j].ToString();
                 }
                 grdAttendanceSummary.AllowUserToAddRows = false;
             }
@@ -65,6 +115,7 @@ namespace AES_Management_System
 				pFrmAttendanceHistory.ShowDialog();
 			}
         }
-#endregion
+		#endregion
+		
 	}
 }

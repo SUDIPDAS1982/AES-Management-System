@@ -128,6 +128,7 @@
 			this.Controls.Add(this.lblInfo);
 			this.Controls.Add(this.lblWelcome);
 			this.Name = "frmEmployee";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Employee Panel";
 			this.Load += new System.EventHandler(this.frmEmployee_Load);
 			this.grpRemarks.ResumeLayout(false);

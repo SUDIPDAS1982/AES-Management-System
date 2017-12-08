@@ -41,6 +41,7 @@
 			this.dtpToDate = new System.Windows.Forms.DateTimePicker();
 			this.lblFromDate = new System.Windows.Forms.Label();
 			this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
+			this.lblColorDefinition = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.grdAttendanceSummary)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -149,11 +150,22 @@
 			this.dtpFromDate.Size = new System.Drawing.Size(200, 20);
 			this.dtpFromDate.TabIndex = 7;
 			// 
+			// lblColorDefinition
+			// 
+			this.lblColorDefinition.AutoSize = true;
+			this.lblColorDefinition.Location = new System.Drawing.Point(33, 458);
+			this.lblColorDefinition.Name = "lblColorDefinition";
+			this.lblColorDefinition.Size = new System.Drawing.Size(35, 13);
+			this.lblColorDefinition.TabIndex = 14;
+			this.lblColorDefinition.Text = "label1";
+			this.lblColorDefinition.Visible = false;
+			// 
 			// frmAttendanceSummary
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(902, 468);
+			this.ClientSize = new System.Drawing.Size(902, 515);
+			this.Controls.Add(this.lblColorDefinition);
 			this.Controls.Add(this.cmdExit);
 			this.Controls.Add(this.grdAttendanceSummary);
 			this.Controls.Add(this.cmdShow);
@@ -162,6 +174,7 @@
 			this.Controls.Add(this.lblFromDate);
 			this.Controls.Add(this.dtpFromDate);
 			this.Name = "frmAttendanceSummary";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Attendance Summary";
 			((System.ComponentModel.ISupportInitialize)(this.grdAttendanceSummary)).EndInit();
 			this.ResumeLayout(false);
@@ -184,5 +197,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
-    }
+		private System.Windows.Forms.Label lblColorDefinition;
+	}
 }

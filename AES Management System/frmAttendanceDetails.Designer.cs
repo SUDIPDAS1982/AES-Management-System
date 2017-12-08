@@ -29,14 +29,14 @@
 		private void InitializeComponent()
 		{
 			this.grdAttendanceDetails = new System.Windows.Forms.DataGridView();
-			this.lnklblExit = new System.Windows.Forms.LinkLabel();
-			this.lnklblBack = new System.Windows.Forms.LinkLabel();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.lnklblExit = new System.Windows.Forms.LinkLabel();
+			this.lnklblBack = new System.Windows.Forms.LinkLabel();
 			((System.ComponentModel.ISupportInitialize)(this.grdAttendanceDetails)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -54,28 +54,6 @@
 			this.grdAttendanceDetails.Name = "grdAttendanceDetails";
 			this.grdAttendanceDetails.Size = new System.Drawing.Size(965, 258);
 			this.grdAttendanceDetails.TabIndex = 0;
-			// 
-			// lnklblExit
-			// 
-			this.lnklblExit.AutoSize = true;
-			this.lnklblExit.Location = new System.Drawing.Point(114, 346);
-			this.lnklblExit.Name = "lnklblExit";
-			this.lnklblExit.Size = new System.Drawing.Size(24, 13);
-			this.lnklblExit.TabIndex = 8;
-			this.lnklblExit.TabStop = true;
-			this.lnklblExit.Text = "Exit";
-			this.lnklblExit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblExit_LinkClicked);
-			// 
-			// lnklblBack
-			// 
-			this.lnklblBack.AutoSize = true;
-			this.lnklblBack.Location = new System.Drawing.Point(47, 346);
-			this.lnklblBack.Name = "lnklblBack";
-			this.lnklblBack.Size = new System.Drawing.Size(32, 13);
-			this.lnklblBack.TabIndex = 7;
-			this.lnklblBack.TabStop = true;
-			this.lnklblBack.Text = "Back";
-			this.lnklblBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblBack_LinkClicked);
 			// 
 			// Column1
 			// 
@@ -113,6 +91,28 @@
 			this.Column5.Name = "Column5";
 			this.Column5.Width = 200;
 			// 
+			// lnklblExit
+			// 
+			this.lnklblExit.AutoSize = true;
+			this.lnklblExit.Location = new System.Drawing.Point(114, 346);
+			this.lnklblExit.Name = "lnklblExit";
+			this.lnklblExit.Size = new System.Drawing.Size(24, 13);
+			this.lnklblExit.TabIndex = 8;
+			this.lnklblExit.TabStop = true;
+			this.lnklblExit.Text = "Exit";
+			this.lnklblExit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblExit_LinkClicked);
+			// 
+			// lnklblBack
+			// 
+			this.lnklblBack.AutoSize = true;
+			this.lnklblBack.Location = new System.Drawing.Point(47, 346);
+			this.lnklblBack.Name = "lnklblBack";
+			this.lnklblBack.Size = new System.Drawing.Size(32, 13);
+			this.lnklblBack.TabIndex = 7;
+			this.lnklblBack.TabStop = true;
+			this.lnklblBack.Text = "Back";
+			this.lnklblBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblBack_LinkClicked);
+			// 
 			// frmAttendanceDetails
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -122,6 +122,7 @@
 			this.Controls.Add(this.lnklblBack);
 			this.Controls.Add(this.grdAttendanceDetails);
 			this.Name = "frmAttendanceDetails";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Attendance Details";
 			((System.ComponentModel.ISupportInitialize)(this.grdAttendanceDetails)).EndInit();
 			this.ResumeLayout(false);
