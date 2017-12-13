@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.cmdExit = new System.Windows.Forms.Button();
 			this.grdAttendanceSummary = new System.Windows.Forms.DataGridView();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,18 +41,10 @@
 			this.lblFromDate = new System.Windows.Forms.Label();
 			this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
 			this.lblColorDefinition = new System.Windows.Forms.Label();
+			this.lnklblExit = new System.Windows.Forms.LinkLabel();
+			this.lnklblBack = new System.Windows.Forms.LinkLabel();
 			((System.ComponentModel.ISupportInitialize)(this.grdAttendanceSummary)).BeginInit();
 			this.SuspendLayout();
-			// 
-			// cmdExit
-			// 
-			this.cmdExit.Location = new System.Drawing.Point(600, 93);
-			this.cmdExit.Name = "cmdExit";
-			this.cmdExit.Size = new System.Drawing.Size(75, 23);
-			this.cmdExit.TabIndex = 13;
-			this.cmdExit.Text = "Exit";
-			this.cmdExit.UseVisualStyleBackColor = true;
-			this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
 			// 
 			// grdAttendanceSummary
 			// 
@@ -110,7 +101,7 @@
 			// 
 			// cmdShow
 			// 
-			this.cmdShow.Location = new System.Drawing.Point(266, 93);
+			this.cmdShow.Location = new System.Drawing.Point(398, 93);
 			this.cmdShow.Name = "cmdShow";
 			this.cmdShow.Size = new System.Drawing.Size(75, 23);
 			this.cmdShow.TabIndex = 11;
@@ -160,13 +151,36 @@
 			this.lblColorDefinition.Text = "label1";
 			this.lblColorDefinition.Visible = false;
 			// 
+			// lnklblExit
+			// 
+			this.lnklblExit.AutoSize = true;
+			this.lnklblExit.Location = new System.Drawing.Point(752, 9);
+			this.lnklblExit.Name = "lnklblExit";
+			this.lnklblExit.Size = new System.Drawing.Size(48, 13);
+			this.lnklblExit.TabIndex = 16;
+			this.lnklblExit.TabStop = true;
+			this.lnklblExit.Text = "Sign Out";
+			this.lnklblExit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblExit_LinkClicked);
+			// 
+			// lnklblBack
+			// 
+			this.lnklblBack.AutoSize = true;
+			this.lnklblBack.Location = new System.Drawing.Point(46, 9);
+			this.lnklblBack.Name = "lnklblBack";
+			this.lnklblBack.Size = new System.Drawing.Size(32, 13);
+			this.lnklblBack.TabIndex = 15;
+			this.lnklblBack.TabStop = true;
+			this.lnklblBack.Text = "Back";
+			this.lnklblBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblBack_LinkClicked);
+			// 
 			// frmAttendanceSummary
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(902, 515);
+			this.Controls.Add(this.lnklblExit);
+			this.Controls.Add(this.lnklblBack);
 			this.Controls.Add(this.lblColorDefinition);
-			this.Controls.Add(this.cmdExit);
 			this.Controls.Add(this.grdAttendanceSummary);
 			this.Controls.Add(this.cmdShow);
 			this.Controls.Add(this.lblToDate);
@@ -183,8 +197,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button cmdExit;
         private System.Windows.Forms.DataGridView grdAttendanceSummary;
         private System.Windows.Forms.Button cmdShow;
         private System.Windows.Forms.Label lblToDate;
@@ -198,5 +210,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
 		private System.Windows.Forms.Label lblColorDefinition;
+		private System.Windows.Forms.LinkLabel lnklblExit;
+		private System.Windows.Forms.LinkLabel lnklblBack;
 	}
 }

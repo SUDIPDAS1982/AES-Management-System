@@ -33,6 +33,8 @@
 			this.cmbUser = new System.Windows.Forms.ComboBox();
 			this.cmdDisplay = new System.Windows.Forms.Button();
 			this.grdEmployeeDetailDisplay = new System.Windows.Forms.DataGridView();
+			this.lnklblBack = new System.Windows.Forms.LinkLabel();
+			this.lnklblExit = new System.Windows.Forms.LinkLabel();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,15 +44,15 @@
 			this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.lnklblBack = new System.Windows.Forms.LinkLabel();
-			this.lnklblExit = new System.Windows.Forms.LinkLabel();
+			this.Column10 = new System.Windows.Forms.DataGridViewButtonColumn();
+			this.Column11 = new System.Windows.Forms.DataGridViewButtonColumn();
 			((System.ComponentModel.ISupportInitialize)(this.grdEmployeeDetailDisplay)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// optAll
 			// 
 			this.optAll.AutoSize = true;
-			this.optAll.Location = new System.Drawing.Point(188, 48);
+			this.optAll.Location = new System.Drawing.Point(332, 48);
 			this.optAll.Name = "optAll";
 			this.optAll.Size = new System.Drawing.Size(36, 17);
 			this.optAll.TabIndex = 0;
@@ -62,7 +64,7 @@
 			// optIndividualEmployee
 			// 
 			this.optIndividualEmployee.AutoSize = true;
-			this.optIndividualEmployee.Location = new System.Drawing.Point(301, 48);
+			this.optIndividualEmployee.Location = new System.Drawing.Point(445, 48);
 			this.optIndividualEmployee.Name = "optIndividualEmployee";
 			this.optIndividualEmployee.Size = new System.Drawing.Size(119, 17);
 			this.optIndividualEmployee.TabIndex = 1;
@@ -75,7 +77,7 @@
 			// 
 			this.cmbUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cmbUser.FormattingEnabled = true;
-			this.cmbUser.Location = new System.Drawing.Point(467, 48);
+			this.cmbUser.Location = new System.Drawing.Point(611, 48);
 			this.cmbUser.Name = "cmbUser";
 			this.cmbUser.Size = new System.Drawing.Size(110, 21);
 			this.cmbUser.TabIndex = 2;
@@ -83,7 +85,7 @@
 			// 
 			// cmdDisplay
 			// 
-			this.cmdDisplay.Location = new System.Drawing.Point(301, 95);
+			this.cmdDisplay.Location = new System.Drawing.Point(445, 97);
 			this.cmdDisplay.Name = "cmdDisplay";
 			this.cmdDisplay.Size = new System.Drawing.Size(75, 23);
 			this.cmdDisplay.TabIndex = 3;
@@ -103,12 +105,37 @@
             this.Column6,
             this.Column7,
             this.Column8,
-            this.Column9});
-			this.grdEmployeeDetailDisplay.Location = new System.Drawing.Point(65, 138);
+            this.Column9,
+            this.Column10,
+            this.Column11});
+			this.grdEmployeeDetailDisplay.Location = new System.Drawing.Point(12, 141);
 			this.grdEmployeeDetailDisplay.Name = "grdEmployeeDetailDisplay";
-			this.grdEmployeeDetailDisplay.Size = new System.Drawing.Size(764, 279);
+			this.grdEmployeeDetailDisplay.Size = new System.Drawing.Size(1009, 279);
 			this.grdEmployeeDetailDisplay.TabIndex = 4;
 			this.grdEmployeeDetailDisplay.Visible = false;
+			this.grdEmployeeDetailDisplay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdEmployeeDetailDisplay_CellContentClick);
+			// 
+			// lnklblBack
+			// 
+			this.lnklblBack.AutoSize = true;
+			this.lnklblBack.Location = new System.Drawing.Point(62, 9);
+			this.lnklblBack.Name = "lnklblBack";
+			this.lnklblBack.Size = new System.Drawing.Size(32, 13);
+			this.lnklblBack.TabIndex = 5;
+			this.lnklblBack.TabStop = true;
+			this.lnklblBack.Text = "Back";
+			this.lnklblBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblBack_LinkClicked);
+			// 
+			// lnklblExit
+			// 
+			this.lnklblExit.AutoSize = true;
+			this.lnklblExit.Location = new System.Drawing.Point(931, 9);
+			this.lnklblExit.Name = "lnklblExit";
+			this.lnklblExit.Size = new System.Drawing.Size(48, 13);
+			this.lnklblExit.TabIndex = 6;
+			this.lnklblExit.TabStop = true;
+			this.lnklblExit.Text = "Sign Out";
+			this.lnklblExit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblExit_LinkClicked);
 			// 
 			// Column1
 			// 
@@ -138,59 +165,52 @@
 			// 
 			this.Column5.HeaderText = "Gender";
 			this.Column5.Name = "Column5";
-			this.Column5.Width = 40;
+			this.Column5.Width = 80;
 			// 
 			// Column6
 			// 
 			this.Column6.HeaderText = "DOB";
 			this.Column6.Name = "Column6";
-			this.Column6.Width = 40;
+			this.Column6.Width = 120;
 			// 
 			// Column7
 			// 
 			this.Column7.HeaderText = "Contact No";
 			this.Column7.Name = "Column7";
-			this.Column7.Width = 60;
+			this.Column7.Width = 80;
 			// 
 			// Column8
 			// 
 			this.Column8.HeaderText = "Email";
 			this.Column8.Name = "Column8";
-			this.Column8.Width = 120;
+			this.Column8.Width = 150;
 			// 
 			// Column9
 			// 
 			this.Column9.HeaderText = "Qualification";
 			this.Column9.Name = "Column9";
-			this.Column9.Width = 80;
 			// 
-			// lnklblBack
+			// Column10
 			// 
-			this.lnklblBack.AutoSize = true;
-			this.lnklblBack.Location = new System.Drawing.Point(68, 444);
-			this.lnklblBack.Name = "lnklblBack";
-			this.lnklblBack.Size = new System.Drawing.Size(32, 13);
-			this.lnklblBack.TabIndex = 5;
-			this.lnklblBack.TabStop = true;
-			this.lnklblBack.Text = "Back";
-			this.lnklblBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblBack_LinkClicked);
+			this.Column10.HeaderText = "";
+			this.Column10.Name = "Column10";
+			this.Column10.Text = "Edit";
+			this.Column10.UseColumnTextForButtonValue = true;
+			this.Column10.Width = 50;
 			// 
-			// lnklblExit
+			// Column11
 			// 
-			this.lnklblExit.AutoSize = true;
-			this.lnklblExit.Location = new System.Drawing.Point(135, 444);
-			this.lnklblExit.Name = "lnklblExit";
-			this.lnklblExit.Size = new System.Drawing.Size(24, 13);
-			this.lnklblExit.TabIndex = 6;
-			this.lnklblExit.TabStop = true;
-			this.lnklblExit.Text = "Exit";
-			this.lnklblExit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblExit_LinkClicked);
+			this.Column11.HeaderText = "";
+			this.Column11.Name = "Column11";
+			this.Column11.Text = "Delete";
+			this.Column11.UseColumnTextForButtonValue = true;
+			this.Column11.Width = 50;
 			// 
 			// frmEmployeeDetails
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(889, 478);
+			this.ClientSize = new System.Drawing.Size(1076, 478);
 			this.Controls.Add(this.lnklblExit);
 			this.Controls.Add(this.lnklblBack);
 			this.Controls.Add(this.grdEmployeeDetailDisplay);
@@ -217,14 +237,16 @@
         private System.Windows.Forms.DataGridView grdEmployeeDetailDisplay;
         private System.Windows.Forms.LinkLabel lnklblBack;
         private System.Windows.Forms.LinkLabel lnklblExit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-    }
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+		private System.Windows.Forms.DataGridViewButtonColumn Column10;
+		private System.Windows.Forms.DataGridViewButtonColumn Column11;
+	}
 }

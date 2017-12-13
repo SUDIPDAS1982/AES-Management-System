@@ -33,16 +33,16 @@
 			this.cmdTimeIn = new System.Windows.Forms.Button();
 			this.cmdTimeOut = new System.Windows.Forms.Button();
 			this.cmdAttendanceSummary = new System.Windows.Forms.Button();
-			this.cmdExit = new System.Windows.Forms.Button();
 			this.txtRemarks = new System.Windows.Forms.TextBox();
 			this.grpRemarks = new System.Windows.Forms.GroupBox();
+			this.lnklblExit = new System.Windows.Forms.LinkLabel();
 			this.grpRemarks.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lblWelcome
 			// 
 			this.lblWelcome.AutoSize = true;
-			this.lblWelcome.Location = new System.Drawing.Point(445, 30);
+			this.lblWelcome.Location = new System.Drawing.Point(334, 30);
 			this.lblWelcome.Name = "lblWelcome";
 			this.lblWelcome.Size = new System.Drawing.Size(35, 13);
 			this.lblWelcome.TabIndex = 0;
@@ -59,7 +59,7 @@
 			// 
 			// cmdTimeIn
 			// 
-			this.cmdTimeIn.Location = new System.Drawing.Point(73, 85);
+			this.cmdTimeIn.Location = new System.Drawing.Point(73, 104);
 			this.cmdTimeIn.Name = "cmdTimeIn";
 			this.cmdTimeIn.Size = new System.Drawing.Size(75, 23);
 			this.cmdTimeIn.TabIndex = 2;
@@ -69,7 +69,7 @@
 			// 
 			// cmdTimeOut
 			// 
-			this.cmdTimeOut.Location = new System.Drawing.Point(73, 162);
+			this.cmdTimeOut.Location = new System.Drawing.Point(73, 181);
 			this.cmdTimeOut.Name = "cmdTimeOut";
 			this.cmdTimeOut.Size = new System.Drawing.Size(75, 23);
 			this.cmdTimeOut.TabIndex = 3;
@@ -79,23 +79,13 @@
 			// 
 			// cmdAttendanceSummary
 			// 
-			this.cmdAttendanceSummary.Location = new System.Drawing.Point(73, 231);
+			this.cmdAttendanceSummary.Location = new System.Drawing.Point(73, 250);
 			this.cmdAttendanceSummary.Name = "cmdAttendanceSummary";
 			this.cmdAttendanceSummary.Size = new System.Drawing.Size(75, 41);
 			this.cmdAttendanceSummary.TabIndex = 4;
 			this.cmdAttendanceSummary.Text = "Attendance Summary";
 			this.cmdAttendanceSummary.UseVisualStyleBackColor = true;
 			this.cmdAttendanceSummary.Click += new System.EventHandler(this.CmdAttendanceSummary_Click);
-			// 
-			// cmdExit
-			// 
-			this.cmdExit.Location = new System.Drawing.Point(448, 85);
-			this.cmdExit.Name = "cmdExit";
-			this.cmdExit.Size = new System.Drawing.Size(75, 23);
-			this.cmdExit.TabIndex = 5;
-			this.cmdExit.Text = "Exit";
-			this.cmdExit.UseVisualStyleBackColor = true;
-			this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
 			// 
 			// txtRemarks
 			// 
@@ -108,20 +98,31 @@
 			// grpRemarks
 			// 
 			this.grpRemarks.Controls.Add(this.txtRemarks);
-			this.grpRemarks.Location = new System.Drawing.Point(169, 85);
+			this.grpRemarks.Location = new System.Drawing.Point(169, 104);
 			this.grpRemarks.Name = "grpRemarks";
 			this.grpRemarks.Size = new System.Drawing.Size(200, 100);
 			this.grpRemarks.TabIndex = 7;
 			this.grpRemarks.TabStop = false;
 			this.grpRemarks.Text = "Remarks (Optional)";
 			// 
+			// lnklblExit
+			// 
+			this.lnklblExit.AutoSize = true;
+			this.lnklblExit.Location = new System.Drawing.Point(339, 52);
+			this.lnklblExit.Name = "lnklblExit";
+			this.lnklblExit.Size = new System.Drawing.Size(48, 13);
+			this.lnklblExit.TabIndex = 9;
+			this.lnklblExit.TabStop = true;
+			this.lnklblExit.Text = "Sign Out";
+			this.lnklblExit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblExit_LinkClicked);
+			// 
 			// frmEmployee
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(585, 318);
+			this.ClientSize = new System.Drawing.Size(495, 326);
+			this.Controls.Add(this.lnklblExit);
 			this.Controls.Add(this.grpRemarks);
-			this.Controls.Add(this.cmdExit);
 			this.Controls.Add(this.cmdAttendanceSummary);
 			this.Controls.Add(this.cmdTimeOut);
 			this.Controls.Add(this.cmdTimeIn);
@@ -145,8 +146,8 @@
         private System.Windows.Forms.Button cmdTimeIn;
         private System.Windows.Forms.Button cmdTimeOut;
         private System.Windows.Forms.Button cmdAttendanceSummary;
-        private System.Windows.Forms.Button cmdExit;
 		private System.Windows.Forms.TextBox txtRemarks;
 		private System.Windows.Forms.GroupBox grpRemarks;
+		private System.Windows.Forms.LinkLabel lnklblExit;
 	}
 }

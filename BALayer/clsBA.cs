@@ -34,15 +34,15 @@ namespace BALayer
         {
             return mDA.GetUserIdName();
         }
-        public List<List<string>> GetAllUserDetails()
+        public List<List<string>> GetAllUserPersonalDetails()
 			//===========================================
         {
-            return mDA.GetAllUserDetails();
+            return mDA.GetAllUserPersonalDetails();
         }
-        public List<List<string>> GetSingleUserDetails(clsBE BE_In)
+        public List<List<string>> GetSingleUserPersonalDetails(clsBE BE_In)
 			//=========================================================
         {
-            return mDA.GetSingleUserDetails(BE_In);
+            return mDA.GetSingleUserPersonalDetails(BE_In);
         }
         public int IsUserLoggedIn(clsBE BE_In)
 			//====================================

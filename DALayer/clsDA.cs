@@ -62,7 +62,7 @@ namespace DALayer
         {
             Dictionary<string, string> pUserIdName = new Dictionary<string, string>();
             con.Open();
-            SqlCommand cmd = new SqlCommand("select fldId, fldFullName from tblUserDetails", con);
+            SqlCommand cmd = new SqlCommand("select fldId, fldFullName from tblUserPersonalDetails", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -73,12 +73,12 @@ namespace DALayer
             con.Close();
             return pUserIdName;
         }
-        public List<List<string>> GetAllUserDetails()
+        public List<List<string>> GetAllUserPersonalDetails()
         //==============================================================
         {
             List<List<string>> pAllUserDetails = new List<List<string>>();           
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from tblUserDetails", con);
+            SqlCommand cmd = new SqlCommand("select * from tblUserPersonalDetails", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -94,13 +94,13 @@ namespace DALayer
             con.Close();
             return pAllUserDetails;
         }
-        public List<List<string>> GetSingleUserDetails(clsBE BE_In)
+        public List<List<string>> GetSingleUserPersonalDetails(clsBE BE_In)
         //==============================================================
         {
             List<List<string>> pSingleUserDetails = new List<List<string>>();
             con.Open();
             int pUserId = BE_In.UserId;
-            SqlCommand cmd = new SqlCommand("select * from tblUserDetails where fldId='" + pUserId + "'", con);
+            SqlCommand cmd = new SqlCommand("select * from tblUserPersonalDetails where fldId='" + pUserId + "'", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);

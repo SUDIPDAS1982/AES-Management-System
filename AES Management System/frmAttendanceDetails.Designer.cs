@@ -94,18 +94,18 @@
 			// lnklblExit
 			// 
 			this.lnklblExit.AutoSize = true;
-			this.lnklblExit.Location = new System.Drawing.Point(114, 346);
+			this.lnklblExit.Location = new System.Drawing.Point(967, 22);
 			this.lnklblExit.Name = "lnklblExit";
-			this.lnklblExit.Size = new System.Drawing.Size(24, 13);
+			this.lnklblExit.Size = new System.Drawing.Size(48, 13);
 			this.lnklblExit.TabIndex = 8;
 			this.lnklblExit.TabStop = true;
-			this.lnklblExit.Text = "Exit";
+			this.lnklblExit.Text = "Sign Out";
 			this.lnklblExit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblExit_LinkClicked);
 			// 
 			// lnklblBack
 			// 
 			this.lnklblBack.AutoSize = true;
-			this.lnklblBack.Location = new System.Drawing.Point(47, 346);
+			this.lnklblBack.Location = new System.Drawing.Point(47, 22);
 			this.lnklblBack.Name = "lnklblBack";
 			this.lnklblBack.Size = new System.Drawing.Size(32, 13);
 			this.lnklblBack.TabIndex = 7;

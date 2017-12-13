@@ -128,6 +128,13 @@ namespace AES_Management_System
             frmAttendanceSummary pFrmAttendanceDetails = new frmAttendanceSummary();
             pFrmAttendanceDetails.ShowDialog();
         }
+		#endregion
+
+		#region "Link Label:"
+		private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			Application.Exit();
+		}
 #endregion
 	}
 }

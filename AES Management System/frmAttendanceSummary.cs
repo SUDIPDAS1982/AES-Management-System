@@ -26,11 +26,6 @@ namespace AES_Management_System
 		#endregion
 
 		#region "Command Button:"
-		private void cmdExit_Click(object sender, EventArgs e)
-			//===================================================
-        {
-            Application.Exit();
-        }
 
         private void cmdShow_Click(object sender, EventArgs e)
 			//====================================================
@@ -58,42 +53,49 @@ namespace AES_Management_System
                 {
 					if (j == 3)
 					{
-						DateTime pLoginTime = Convert.ToDateTime(pSingleUserAttendanceSummary[i][j].ToString());						
-						if (pLoginTime.TimeOfDay > pHalfLoginTime.TimeOfDay)
+						if (pSingleUserAttendanceSummary[i][j] != "")
 						{
-							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Red;
-						}
-						else if (pLoginTime.TimeOfDay > pLateLoginTime.TimeOfDay)
-						{
-							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Blue;
-						}
-						else if (pLoginTime.TimeOfDay > pGraceLoginTime.TimeOfDay)
-						{
-							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Orange;
-						}
-						else if (pLoginTime.TimeOfDay > pScheduleLoginTime.TimeOfDay)
-						{
-							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.DarkGray;
-						}
-						else
-						{
-							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Black;
+							DateTime pLoginTime = Convert.ToDateTime(pSingleUserAttendanceSummary[i][j].ToString());
+							if (pLoginTime.TimeOfDay > pHalfLoginTime.TimeOfDay)
+							{
+								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Red;
+							}
+							else if (pLoginTime.TimeOfDay > pLateLoginTime.TimeOfDay)
+							{
+								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Blue;
+							}
+							else if (pLoginTime.TimeOfDay > pGraceLoginTime.TimeOfDay)
+							{
+								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Orange;
+							}
+							else if (pLoginTime.TimeOfDay > pScheduleLoginTime.TimeOfDay)
+							{
+								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.DarkGray;
+							}
+							else
+							{
+								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Black;
+							}
 						}
 					}
 					if (j == 4)
 					{
-						DateTime pLogoutTime = Convert.ToDateTime(pSingleUserAttendanceSummary[i][j].ToString());
-						if (pLogoutTime.TimeOfDay < pHalfLogoutTime.TimeOfDay)
+						if (pSingleUserAttendanceSummary[i][j]!="")
 						{
-							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Red;
-						}
-						else if (pLogoutTime.TimeOfDay < pScheduleLogoutTime.TimeOfDay)
-						{
-							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Blue;
-						}
-						else
-						{
-							grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Black;
+							DateTime pLogoutTime = Convert.ToDateTime(pSingleUserAttendanceSummary[i][j].ToString());
+
+							if (pLogoutTime.TimeOfDay < pHalfLogoutTime.TimeOfDay)
+							{
+								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Red;
+							}
+							else if (pLogoutTime.TimeOfDay < pScheduleLogoutTime.TimeOfDay)
+							{
+								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Blue;
+							}
+							else
+							{
+								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Black;
+							}
 						}
 					}
 					grdAttendanceSummary.Rows[i].Cells[j].Value = pSingleUserAttendanceSummary[i][j].ToString();
@@ -109,13 +111,25 @@ namespace AES_Management_System
         {
             if (e.ColumnIndex == 5)
             {
-				//int pUserId=Convert.ToInt32(grdAttendanceSummary.Rows[e.RowIndex].Cells[e.ColumnIndex-5].Value.ToString());
 				DateTime pLoginDate = Convert.ToDateTime(grdAttendanceSummary.Rows[e.RowIndex].Cells[e.ColumnIndex - 3].Value.ToString());
-				frmAttendanceDetails pFrmAttendanceHistory = new frmAttendanceDetails(pLoginDate);
-				pFrmAttendanceHistory.ShowDialog();
+				frmAttendanceDetails pFrmAttendanceDetails = new frmAttendanceDetails(pLoginDate);
+				pFrmAttendanceDetails.ShowDialog();
 			}
         }
 		#endregion
-		
+
+		#region "Link Label:"
+		private void lnklblBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			this.Hide();
+			frmEmployee pFrmEmployee = new frmEmployee();
+			pFrmEmployee.ShowDialog();
+		}
+
+		private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			Application.Exit();
+		}
+#endregion
 	}
 }

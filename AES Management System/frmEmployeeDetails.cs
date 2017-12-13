@@ -60,29 +60,29 @@ namespace AES_Management_System
             grdEmployeeDetailDisplay.Rows.Clear();
             grdEmployeeDetailDisplay.Visible = true;
             Program.gBE.UserId = Convert.ToInt32(cmbUser.SelectedValue);
-            List<List<string>> pAllUserDetails = new List<List<string>>();
+            List<List<string>> pAllUserPersonalDetails = new List<List<string>>();
             if (optAll.Checked)
             {
-                pAllUserDetails = mBA.GetAllUserDetails();
-                for (int i = 0; i < pAllUserDetails.Count; i++)
+                pAllUserPersonalDetails = mBA.GetAllUserPersonalDetails();
+                for (int i = 0; i < pAllUserPersonalDetails.Count; i++)
                 {
                     grdEmployeeDetailDisplay.Rows.Add();
-                    for (int j = 0; j < pAllUserDetails[i].Count; j++)
+                    for (int j = 0; j < pAllUserPersonalDetails[i].Count; j++)
                     {
-                        grdEmployeeDetailDisplay.Rows[i].Cells[j].Value = pAllUserDetails[i][j].ToString();
+                        grdEmployeeDetailDisplay.Rows[i].Cells[j].Value = pAllUserPersonalDetails[i][j].ToString();
                     }
                     grdEmployeeDetailDisplay.AllowUserToAddRows = false;
                 }
             }
             else
             {
-                pAllUserDetails = mBA.GetSingleUserDetails(Program.gBE);
-                for (int i = 0; i < pAllUserDetails.Count; i++)
+                pAllUserPersonalDetails = mBA.GetSingleUserPersonalDetails(Program.gBE);
+                for (int i = 0; i < pAllUserPersonalDetails.Count; i++)
                 {
                     grdEmployeeDetailDisplay.Rows.Add();
-                    for (int j = 0; j < pAllUserDetails[i].Count; j++)
+                    for (int j = 0; j < pAllUserPersonalDetails[i].Count; j++)
                     {
-                        grdEmployeeDetailDisplay.Rows[i].Cells[j].Value = pAllUserDetails[i][j].ToString();
+                        grdEmployeeDetailDisplay.Rows[i].Cells[j].Value = pAllUserPersonalDetails[i][j].ToString();
                     }
                     grdEmployeeDetailDisplay.AllowUserToAddRows = false;
                 }
@@ -104,6 +104,17 @@ namespace AES_Management_System
             frmAdmin pFrmAdmin = new frmAdmin();
             pFrmAdmin.ShowDialog();
         }
-#endregion
+		#endregion
+
+		private void grdEmployeeDetailDisplay_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+			if (e.ColumnIndex == 9)
+			{
+				int pUserId = Convert.ToInt32(grdEmployeeDetailDisplay.Rows[e.RowIndex].Cells[e.ColumnIndex - 9].Value.ToString());
+				Program.gBE.UserId = pUserId;
+				frmEmployeeEdit pFrmEmployeeEdit = new frmEmployeeEdit();
+				pFrmEmployeeEdit.ShowDialog();
+			}
+		}
 	}
 }
