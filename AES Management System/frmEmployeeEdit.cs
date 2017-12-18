@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BELayer;
 using BALayer;
+using System.Text.RegularExpressions;
 
 namespace AES_Management_System
 {
@@ -43,7 +44,7 @@ namespace AES_Management_System
 			txtDateOfBirth.Text= pSingleUserPersonalDetails[0][5].ToString();
 			txtContactNumber.Text= pSingleUserPersonalDetails[0][6].ToString();
 			txtEmailId.Text= pSingleUserPersonalDetails[0][7].ToString();
-			txtQualification.Text= pSingleUserPersonalDetails[0][8].ToString();
+			cmbQualification.Text= pSingleUserPersonalDetails[0][8].ToString();
 		}
 
 		private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -59,6 +60,39 @@ namespace AES_Management_System
 		private void lnklblBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			this.Hide();
+		}
+
+		private void cmdSave_Click(object sender, EventArgs e)
+		{
+			if (txtAddress.Text == "" || txtPincode.Text=="" || txtDateOfBirth.Text=="" ||txtContactNumber.Text=="" || txtEmailId.Text=="")
+			{
+				MessageBox.Show("Please fill in all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txtAddress.Focus();
+				return;
+			}
+			if (!Regex.Match(txtPincode.Text, @"^\d{6}$").Success)
+			{
+				MessageBox.Show("Invalid zip code", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txtPincode.Focus();
+				return;
+			}
+			if (!Regex.Match(txtContactNumber.Text, @"^\d{10}$").Success)
+			{
+				MessageBox.Show("Invalid Phone Number", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txtContactNumber.Focus();
+				return;
+			}
+			if (!Regex.Match(txtEmailId.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$").Success)
+			{
+				MessageBox.Show("Invalid Email Id", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txtEmailId.Focus();
+				return;
+			}
+		}
+
+		private void cmbQualification_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			
 		}
 	}
 }

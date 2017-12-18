@@ -42,7 +42,6 @@
 			this.lblContactNumber = new System.Windows.Forms.Label();
 			this.txtEmailId = new System.Windows.Forms.TextBox();
 			this.lblEmailId = new System.Windows.Forms.Label();
-			this.txtQualification = new System.Windows.Forms.TextBox();
 			this.lblQualification = new System.Windows.Forms.Label();
 			this.grpGender = new System.Windows.Forms.GroupBox();
 			this.optOther = new System.Windows.Forms.RadioButton();
@@ -52,6 +51,7 @@
 			this.cmdSave = new System.Windows.Forms.Button();
 			this.lnklblExit = new System.Windows.Forms.LinkLabel();
 			this.lnklblBack = new System.Windows.Forms.LinkLabel();
+			this.cmbQualification = new System.Windows.Forms.ComboBox();
 			this.grpGender.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -172,13 +172,6 @@
 			this.lblEmailId.TabIndex = 14;
 			this.lblEmailId.Text = "Email Id:";
 			// 
-			// txtQualification
-			// 
-			this.txtQualification.Location = new System.Drawing.Point(156, 429);
-			this.txtQualification.Name = "txtQualification";
-			this.txtQualification.Size = new System.Drawing.Size(208, 20);
-			this.txtQualification.TabIndex = 17;
-			// 
 			// lblQualification
 			// 
 			this.lblQualification.AutoSize = true;
@@ -249,6 +242,7 @@
 			this.cmdSave.TabIndex = 20;
 			this.cmdSave.Text = "Save";
 			this.cmdSave.UseVisualStyleBackColor = true;
+			this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
 			// 
 			// lnklblExit
 			// 
@@ -272,17 +266,33 @@
 			this.lnklblBack.Text = "Back";
 			this.lnklblBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblBack_LinkClicked);
 			// 
+			// cmbQualification
+			// 
+			this.cmbQualification.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cmbQualification.FormattingEnabled = true;
+			this.cmbQualification.Items.AddRange(new object[] {
+            "PHD",
+            "MASTER",
+            "BACHELOR",
+            "12TH STANDARDS",
+            "10TH STANDARDS"});
+			this.cmbQualification.Location = new System.Drawing.Point(156, 429);
+			this.cmbQualification.Name = "cmbQualification";
+			this.cmbQualification.Size = new System.Drawing.Size(127, 21);
+			this.cmbQualification.TabIndex = 23;
+			this.cmbQualification.SelectedIndexChanged += new System.EventHandler(this.cmbQualification_SelectedIndexChanged);
+			// 
 			// frmEmployeeEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(708, 516);
+			this.Controls.Add(this.cmbQualification);
 			this.Controls.Add(this.lnklblExit);
 			this.Controls.Add(this.lnklblBack);
 			this.Controls.Add(this.cmdSave);
 			this.Controls.Add(this.dtpDateOfBirth);
 			this.Controls.Add(this.grpGender);
-			this.Controls.Add(this.txtQualification);
 			this.Controls.Add(this.lblQualification);
 			this.Controls.Add(this.txtEmailId);
 			this.Controls.Add(this.lblEmailId);
@@ -325,7 +335,6 @@
 		private System.Windows.Forms.Label lblContactNumber;
 		private System.Windows.Forms.TextBox txtEmailId;
 		private System.Windows.Forms.Label lblEmailId;
-		private System.Windows.Forms.TextBox txtQualification;
 		private System.Windows.Forms.Label lblQualification;
 		private System.Windows.Forms.GroupBox grpGender;
 		private System.Windows.Forms.RadioButton optOther;
@@ -335,5 +344,6 @@
 		private System.Windows.Forms.Button cmdSave;
 		private System.Windows.Forms.LinkLabel lnklblExit;
 		private System.Windows.Forms.LinkLabel lnklblBack;
+		private System.Windows.Forms.ComboBox cmbQualification;
 	}
 }
