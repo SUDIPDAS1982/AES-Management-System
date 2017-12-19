@@ -62,7 +62,7 @@ namespace DALayer
         {
             Dictionary<string, string> pUserIdName = new Dictionary<string, string>();
             con.Open();
-            SqlCommand cmd = new SqlCommand("select fldId, fldFullName from tblUserPersonalDetails", con);
+            SqlCommand cmd = new SqlCommand("select fldId, fldFullName from tblUserPersonalDetails where fldId in (select fldUserId from tblUserLogin where fldUserActive='"+true+"')", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -78,7 +78,7 @@ namespace DALayer
         {
             List<List<string>> pAllUserDetails = new List<List<string>>();           
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from tblUserPersonalDetails", con);
+            SqlCommand cmd = new SqlCommand("select * from tblUserPersonalDetails where fldId in (select fldUserId from tblUserLogin where fldUserActive='" + true + "')", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -276,6 +276,33 @@ namespace DALayer
 			}
 			con.Close();
 			return pSingleUserAttendanceDetails;
+		}
+		public int EditUserPersonalDetails(clsBE BE_In)
+			//===============================================
+		{
+			con.Open();
+			int pUserId = BE_In.UserId;
+			string pUserAddress = BE_In.UserAddress;
+			int pUserPincode = BE_In.UserPincode;
+			string pUserGender = BE_In.UserGender;
+			DateTime pUserDOB = BE_In.UserDOB;
+			Int64 pUserContactNo = BE_In.UserContactNo;
+			string pUserEmail = BE_In.UserEmail;
+			string pUserQualification = BE_In.UserQualification;
+			SqlCommand cmd = new SqlCommand("update tblUserPersonalDetails set fldAddress='" + pUserAddress + "', fldPincode='" + pUserPincode + "', fldGender='" + pUserGender + "', fldDOB='" + pUserDOB + "', fldContactNo='" + pUserContactNo + "', fldEmail='" + pUserEmail + "', fldQualification='" + pUserQualification + "' where fldId='"+pUserId+"'", con);
+			int i = cmd.ExecuteNonQuery();
+			con.Close();
+			return i;
+		}
+		public int DeleteUser(clsBE BE_In)
+			//=================================
+		{
+			con.Open();
+			int pUserId = BE_In.UserId;
+			SqlCommand cmd = new SqlCommand("update tblUserLogin set fldUserActive='" + false + "' where fldUserId='" + pUserId + "'", con);
+			int i = cmd.ExecuteNonQuery();
+			con.Close();
+			return i;
 		}
 	}
 }

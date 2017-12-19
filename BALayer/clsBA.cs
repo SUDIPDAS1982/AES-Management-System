@@ -102,5 +102,15 @@ namespace BALayer
 		{
 			return mDA.GetSingleUserAttendanceDetails(BE_In, pLoginDate_In);
 		}
+		public int EditUserPersonalDetails(clsBE BE_In)
+			//==============================================
+		{
+			return mDA.EditUserPersonalDetails(BE_In);
+		}
+		public int DeleteUser(clsBE BE_In)
+			//===============================
+		{
+			return mDA.DeleteUser(BE_In);
+		}
 	}
 }

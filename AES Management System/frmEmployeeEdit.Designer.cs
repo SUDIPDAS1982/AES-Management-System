@@ -198,10 +198,10 @@
 			this.optOther.AutoSize = true;
 			this.optOther.Location = new System.Drawing.Point(263, 16);
 			this.optOther.Name = "optOther";
-			this.optOther.Size = new System.Drawing.Size(51, 17);
+			this.optOther.Size = new System.Drawing.Size(63, 17);
 			this.optOther.TabIndex = 2;
 			this.optOther.TabStop = true;
-			this.optOther.Text = "Other";
+			this.optOther.Text = "OTHER";
 			this.optOther.UseVisualStyleBackColor = true;
 			// 
 			// optFemale
@@ -209,10 +209,10 @@
 			this.optFemale.AutoSize = true;
 			this.optFemale.Location = new System.Drawing.Point(158, 16);
 			this.optFemale.Name = "optFemale";
-			this.optFemale.Size = new System.Drawing.Size(59, 17);
+			this.optFemale.Size = new System.Drawing.Size(67, 17);
 			this.optFemale.TabIndex = 1;
 			this.optFemale.TabStop = true;
-			this.optFemale.Text = "Female";
+			this.optFemale.Text = "FEMALE";
 			this.optFemale.UseVisualStyleBackColor = true;
 			// 
 			// optMale
@@ -220,10 +220,10 @@
 			this.optMale.AutoSize = true;
 			this.optMale.Location = new System.Drawing.Point(65, 16);
 			this.optMale.Name = "optMale";
-			this.optMale.Size = new System.Drawing.Size(48, 17);
+			this.optMale.Size = new System.Drawing.Size(54, 17);
 			this.optMale.TabIndex = 0;
 			this.optMale.TabStop = true;
-			this.optMale.Text = "Male";
+			this.optMale.Text = "MALE";
 			this.optMale.UseVisualStyleBackColor = true;
 			// 
 			// dtpDateOfBirth
@@ -280,7 +280,6 @@
 			this.cmbQualification.Name = "cmbQualification";
 			this.cmbQualification.Size = new System.Drawing.Size(127, 21);
 			this.cmbQualification.TabIndex = 23;
-			this.cmbQualification.SelectedIndexChanged += new System.EventHandler(this.cmbQualification_SelectedIndexChanged);
 			// 
 			// frmEmployeeEdit
 			// 

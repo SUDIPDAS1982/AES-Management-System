@@ -115,6 +115,18 @@ namespace AES_Management_System
 				frmEmployeeEdit pFrmEmployeeEdit = new frmEmployeeEdit();
 				pFrmEmployeeEdit.ShowDialog();
 			}
+			if (e.ColumnIndex == 10)
+			{
+				int pUserId = Convert.ToInt32(grdEmployeeDetailDisplay.Rows[e.RowIndex].Cells[e.ColumnIndex - 10].Value.ToString());
+				Program.gBE.UserId = pUserId;
+				if (mBA.DeleteUser(Program.gBE) > 0)
+				{
+					MessageBox.Show("User Deleted Successufully.");
+					this.Hide();
+					frmEmployeeDetails pFrmEmployeeDetails = new frmEmployeeDetails();
+					pFrmEmployeeDetails.ShowDialog();
+				}
+			}
 		}
 	}
 }
