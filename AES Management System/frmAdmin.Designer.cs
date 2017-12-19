@@ -92,6 +92,7 @@
 			this.mnuDeleteEmployee.Name = "mnuDeleteEmployee";
 			this.mnuDeleteEmployee.Size = new System.Drawing.Size(164, 22);
 			this.mnuDeleteEmployee.Text = "Delete Employee";
+			this.mnuDeleteEmployee.Click += new System.EventHandler(this.mnuDeleteEmployee_Click);
 			// 
 			// mnuAttendance
 			// 

@@ -50,7 +50,7 @@ namespace DALayer
             con.Open();
             string pUserName = BE_In.UserName;
             string pPassword = BE_In.Password;
-            SqlCommand cmd = new SqlCommand("select fldFullName from tblUserDetails where fldId in (select fldUserId from tblUserLogin where fldUserName='" + pUserName + "')", con);
+            SqlCommand cmd = new SqlCommand("select fldFullName from tblUserPersonalDetails where fldId in (select fldUserId from tblUserLogin where fldUserName='" + pUserName + "')", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -146,8 +146,7 @@ namespace DALayer
             if (!Convert.IsDBNull(dt.Rows[0][0]))
             {
                 return 1;
-            }
-            
+            }            
             return 0;
         }
         public string GetMaxLogInTime(clsBE BE_In, DateTime pDate_In)

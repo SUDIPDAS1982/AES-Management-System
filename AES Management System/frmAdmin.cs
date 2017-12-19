@@ -26,15 +26,17 @@ namespace AES_Management_System
         }
 		#endregion
 
-		#region "Menu:"
+		#region "Load:"
 		private void frmAdmin_Load(object sender, EventArgs e)
 			//=====================================================
         {
-            string pUserName= mBA.SelectUserName(Program.gBE);
-            lblWelcome.Text= "Welcome " + pUserName + "";
-        }
+			string pUserName = mBA.SelectUserName(Program.gBE);
+			lblWelcome.Text = "Login As: " + pUserName + "";
+		}
+#endregion
 
-        private void mnuEmployeeDetails_Click(object sender, EventArgs e)
+		#region "Menu:"
+		private void mnuEmployeeDetails_Click(object sender, EventArgs e)
 			//===============================================================
         {
             this.Hide();
@@ -47,6 +49,15 @@ namespace AES_Management_System
         {
             Application.Exit();
         }
-#endregion
+		
+
+		private void mnuDeleteEmployee_Click(object sender, EventArgs e)
+			//==============================================================
+		{
+			this.Hide();
+			frmEmployeeDelete pFrmEmployeeDelete = new frmEmployeeDelete();
+			pFrmEmployeeDelete.ShowDialog();
+		}
+		#endregion
 	}
 }

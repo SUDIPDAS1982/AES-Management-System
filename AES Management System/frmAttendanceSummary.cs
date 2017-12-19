@@ -30,7 +30,8 @@ namespace AES_Management_System
         private void cmdShow_Click(object sender, EventArgs e)
 			//====================================================
         {
-            grdAttendanceSummary.Rows.Clear();
+			grdAttendanceSummary.Columns[5].Visible = false;
+			grdAttendanceSummary.Rows.Clear();
             grdAttendanceSummary.Visible = true;
 			lblColorDefinition.Visible = true;
 			lblColorDefinition.Text = "Schedule time: Black, Grace Time: Dark Grey, Late: Orange, Half: Blue, Not Count: Red.";
@@ -44,64 +45,75 @@ namespace AES_Management_System
 
 			DateTime pFromDate = Convert.ToDateTime(dtpFromDate.Text);
             DateTime pToDate = Convert.ToDateTime(dtpToDate.Text);
-            List<List<string>> pSingleUserAttendanceSummary = new List<List<string>>();
-            pSingleUserAttendanceSummary = mBA.GetSingleUserAttendanceSummary(Program.gBE, pFromDate, pToDate);
-            for (int i = 0; i < pSingleUserAttendanceSummary.Count; i++)
-            {
-                grdAttendanceSummary.Rows.Add();
-                for (int j = 0; j < pSingleUserAttendanceSummary[i].Count; j++)
-                {
-					if (j == 3)
+			if (pFromDate.Day > pToDate.Day)
+			{
+				MessageBox.Show("Please select correct date range.","Date Selection",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+			}
+			else
+			{
+				List<List<string>> pSingleUserAttendanceSummary = new List<List<string>>();
+				pSingleUserAttendanceSummary = mBA.GetSingleUserAttendanceSummary(Program.gBE, pFromDate, pToDate);
+				if (pSingleUserAttendanceSummary.Count > 0)
+				{
+					grdAttendanceSummary.Columns[5].Visible = true;
+				}
+				for (int i = 0; i < pSingleUserAttendanceSummary.Count; i++)
+				{
+					grdAttendanceSummary.Rows.Add();
+					for (int j = 0; j < pSingleUserAttendanceSummary[i].Count; j++)
 					{
-						if (pSingleUserAttendanceSummary[i][j] != "")
+						if (j == 3)
 						{
-							DateTime pLoginTime = Convert.ToDateTime(pSingleUserAttendanceSummary[i][j].ToString());
-							if (pLoginTime.TimeOfDay > pHalfLoginTime.TimeOfDay)
+							if (pSingleUserAttendanceSummary[i][j] != "")
 							{
-								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Red;
-							}
-							else if (pLoginTime.TimeOfDay > pLateLoginTime.TimeOfDay)
-							{
-								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Blue;
-							}
-							else if (pLoginTime.TimeOfDay > pGraceLoginTime.TimeOfDay)
-							{
-								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Orange;
-							}
-							else if (pLoginTime.TimeOfDay > pScheduleLoginTime.TimeOfDay)
-							{
-								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.DarkGray;
-							}
-							else
-							{
-								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Black;
+								DateTime pLoginTime = Convert.ToDateTime(pSingleUserAttendanceSummary[i][j].ToString());
+								if (pLoginTime.TimeOfDay > pHalfLoginTime.TimeOfDay)
+								{
+									grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Red;
+								}
+								else if (pLoginTime.TimeOfDay > pLateLoginTime.TimeOfDay)
+								{
+									grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Blue;
+								}
+								else if (pLoginTime.TimeOfDay > pGraceLoginTime.TimeOfDay)
+								{
+									grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Orange;
+								}
+								else if (pLoginTime.TimeOfDay > pScheduleLoginTime.TimeOfDay)
+								{
+									grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.DarkGray;
+								}
+								else
+								{
+									grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Black;
+								}
 							}
 						}
-					}
-					if (j == 4)
-					{
-						if (pSingleUserAttendanceSummary[i][j]!="")
+						if (j == 4)
 						{
-							DateTime pLogoutTime = Convert.ToDateTime(pSingleUserAttendanceSummary[i][j].ToString());
+							if (pSingleUserAttendanceSummary[i][j] != "")
+							{
+								DateTime pLogoutTime = Convert.ToDateTime(pSingleUserAttendanceSummary[i][j].ToString());
 
-							if (pLogoutTime.TimeOfDay < pHalfLogoutTime.TimeOfDay)
-							{
-								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Red;
-							}
-							else if (pLogoutTime.TimeOfDay < pScheduleLogoutTime.TimeOfDay)
-							{
-								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Blue;
-							}
-							else
-							{
-								grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Black;
+								if (pLogoutTime.TimeOfDay < pHalfLogoutTime.TimeOfDay)
+								{
+									grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Red;
+								}
+								else if (pLogoutTime.TimeOfDay < pScheduleLogoutTime.TimeOfDay)
+								{
+									grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Blue;
+								}
+								else
+								{
+									grdAttendanceSummary.Rows[i].Cells[j].Style.ForeColor = Color.Black;
+								}
 							}
 						}
+						grdAttendanceSummary.Rows[i].Cells[j].Value = pSingleUserAttendanceSummary[i][j].ToString();
 					}
-					grdAttendanceSummary.Rows[i].Cells[j].Value = pSingleUserAttendanceSummary[i][j].ToString();
-                }
-                grdAttendanceSummary.AllowUserToAddRows = false;
-            }
+					grdAttendanceSummary.AllowUserToAddRows = false;
+				}
+			}
         }
 		#endregion
 

@@ -110,7 +110,7 @@
             this.Column11});
 			this.grdEmployeeDetailDisplay.Location = new System.Drawing.Point(12, 141);
 			this.grdEmployeeDetailDisplay.Name = "grdEmployeeDetailDisplay";
-			this.grdEmployeeDetailDisplay.Size = new System.Drawing.Size(1009, 279);
+			this.grdEmployeeDetailDisplay.Size = new System.Drawing.Size(1005, 279);
 			this.grdEmployeeDetailDisplay.TabIndex = 4;
 			this.grdEmployeeDetailDisplay.Visible = false;
 			this.grdEmployeeDetailDisplay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdEmployeeDetailDisplay_CellContentClick);
@@ -196,6 +196,7 @@
 			this.Column10.Name = "Column10";
 			this.Column10.Text = "Edit";
 			this.Column10.UseColumnTextForButtonValue = true;
+			this.Column10.Visible = false;
 			this.Column10.Width = 50;
 			// 
 			// Column11
@@ -204,6 +205,7 @@
 			this.Column11.Name = "Column11";
 			this.Column11.Text = "Delete";
 			this.Column11.UseColumnTextForButtonValue = true;
+			this.Column11.Visible = false;
 			this.Column11.Width = 50;
 			// 
 			// frmEmployeeDetails

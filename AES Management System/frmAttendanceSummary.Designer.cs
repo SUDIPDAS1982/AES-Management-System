@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
 			this.grdAttendanceSummary = new System.Windows.Forms.DataGridView();
-			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
 			this.cmdShow = new System.Windows.Forms.Button();
 			this.lblToDate = new System.Windows.Forms.Label();
 			this.dtpToDate = new System.Windows.Forms.DateTimePicker();
@@ -43,6 +37,12 @@
 			this.lblColorDefinition = new System.Windows.Forms.Label();
 			this.lnklblExit = new System.Windows.Forms.LinkLabel();
 			this.lnklblBack = new System.Windows.Forms.LinkLabel();
+			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
 			((System.ComponentModel.ISupportInitialize)(this.grdAttendanceSummary)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -62,42 +62,6 @@
 			this.grdAttendanceSummary.TabIndex = 12;
 			this.grdAttendanceSummary.Visible = false;
 			this.grdAttendanceSummary.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdAttendanceDetails_CellContentClick);
-			// 
-			// Column1
-			// 
-			this.Column1.HeaderText = "User Id";
-			this.Column1.Name = "Column1";
-			// 
-			// Column2
-			// 
-			this.Column2.HeaderText = "User Name";
-			this.Column2.Name = "Column2";
-			this.Column2.Width = 130;
-			// 
-			// Column3
-			// 
-			this.Column3.HeaderText = "Login Date";
-			this.Column3.Name = "Column3";
-			this.Column3.Width = 130;
-			// 
-			// Column4
-			// 
-			this.Column4.HeaderText = "Login Time";
-			this.Column4.Name = "Column4";
-			this.Column4.Width = 130;
-			// 
-			// Column5
-			// 
-			this.Column5.HeaderText = "Logout Time";
-			this.Column5.Name = "Column5";
-			this.Column5.Width = 130;
-			// 
-			// Column6
-			// 
-			this.Column6.HeaderText = "Details";
-			this.Column6.Name = "Column6";
-			this.Column6.Text = "Show";
-			this.Column6.UseColumnTextForButtonValue = true;
 			// 
 			// cmdShow
 			// 
@@ -173,6 +137,43 @@
 			this.lnklblBack.Text = "Back";
 			this.lnklblBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblBack_LinkClicked);
 			// 
+			// Column1
+			// 
+			this.Column1.HeaderText = "User Id";
+			this.Column1.Name = "Column1";
+			// 
+			// Column2
+			// 
+			this.Column2.HeaderText = "User Name";
+			this.Column2.Name = "Column2";
+			this.Column2.Width = 130;
+			// 
+			// Column3
+			// 
+			this.Column3.HeaderText = "Login Date";
+			this.Column3.Name = "Column3";
+			this.Column3.Width = 130;
+			// 
+			// Column4
+			// 
+			this.Column4.HeaderText = "Login Time";
+			this.Column4.Name = "Column4";
+			this.Column4.Width = 130;
+			// 
+			// Column5
+			// 
+			this.Column5.HeaderText = "Logout Time";
+			this.Column5.Name = "Column5";
+			this.Column5.Width = 130;
+			// 
+			// Column6
+			// 
+			this.Column6.HeaderText = "Details";
+			this.Column6.Name = "Column6";
+			this.Column6.Text = "Show";
+			this.Column6.UseColumnTextForButtonValue = true;
+			this.Column6.Visible = false;
+			// 
 			// frmAttendanceSummary
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -203,14 +204,14 @@
         private System.Windows.Forms.DateTimePicker dtpToDate;
         private System.Windows.Forms.Label lblFromDate;
         private System.Windows.Forms.DateTimePicker dtpFromDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewButtonColumn Column6;
 		private System.Windows.Forms.Label lblColorDefinition;
 		private System.Windows.Forms.LinkLabel lnklblExit;
 		private System.Windows.Forms.LinkLabel lnklblBack;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+		private System.Windows.Forms.DataGridViewButtonColumn Column6;
 	}
 }

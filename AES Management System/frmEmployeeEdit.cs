@@ -17,12 +17,16 @@ namespace AES_Management_System
 		//=======================================
 	{
 		public clsBA mBA = new clsBA();
+
+		#region "Constructor:"
 		public frmEmployeeEdit()
 			//=======================
 		{
 			InitializeComponent();
 		}
+		#endregion
 
+		#region "Form Load:"
 		private void frmEmployeeEdit_Load(object sender, EventArgs e)
 			//=========================================================
 		{
@@ -49,25 +53,31 @@ namespace AES_Management_System
 			txtEmailId.Text= pSingleUserPersonalDetails[0][7].ToString();
 			cmbQualification.Text= pSingleUserPersonalDetails[0][8].ToString();
 		}
+		#endregion
 
+		#region "Link Label:"
 		private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 			//===============================================================================
 		{
 			Application.Exit();
 		}
 
+		private void lnklblBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		//================================================================================
+		{
+			this.Hide();
+		}
+		#endregion
+
+		#region "Date Time Picker:"
 		private void dtpDateOfBirth_ValueChanged(object sender, EventArgs e)
 			//=================================================================
 		{
 			txtDateOfBirth.Text = dtpDateOfBirth.Value.ToString();
 		}
+		#endregion
 
-		private void lnklblBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-			//================================================================================
-		{
-			this.Hide();
-		}
-
+		#region "Command Button:"
 		private void cmdSave_Click(object sender, EventArgs e)
 			//===================================================
 		{
@@ -122,5 +132,6 @@ namespace AES_Management_System
 				pFrmEmployeeDetails.ShowDialog();
 			}
 		}
+#endregion
 	}
 }

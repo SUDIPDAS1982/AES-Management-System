@@ -57,7 +57,9 @@ namespace AES_Management_System
 		private void cmdDisplay_Click(object sender, EventArgs e)
 			//========================================================
         {
-            grdEmployeeDetailDisplay.Rows.Clear();
+			grdEmployeeDetailDisplay.Columns[9].Visible = false;
+			grdEmployeeDetailDisplay.Columns[10].Visible = false;
+			grdEmployeeDetailDisplay.Rows.Clear();
             grdEmployeeDetailDisplay.Visible = true;
             Program.gBE.UserId = Convert.ToInt32(cmbUser.SelectedValue);
             List<List<string>> pAllUserPersonalDetails = new List<List<string>>();
@@ -66,7 +68,9 @@ namespace AES_Management_System
                 pAllUserPersonalDetails = mBA.GetAllUserPersonalDetails();
                 for (int i = 0; i < pAllUserPersonalDetails.Count; i++)
                 {
-                    grdEmployeeDetailDisplay.Rows.Add();
+					grdEmployeeDetailDisplay.Columns[9].Visible = true;
+					grdEmployeeDetailDisplay.Columns[10].Visible = true;
+					grdEmployeeDetailDisplay.Rows.Add();
                     for (int j = 0; j < pAllUserPersonalDetails[i].Count; j++)
                     {
                         grdEmployeeDetailDisplay.Rows[i].Cells[j].Value = pAllUserPersonalDetails[i][j].ToString();
@@ -79,7 +83,9 @@ namespace AES_Management_System
                 pAllUserPersonalDetails = mBA.GetSingleUserPersonalDetails(Program.gBE);
                 for (int i = 0; i < pAllUserPersonalDetails.Count; i++)
                 {
-                    grdEmployeeDetailDisplay.Rows.Add();
+					grdEmployeeDetailDisplay.Columns[9].Visible = true;
+					grdEmployeeDetailDisplay.Columns[10].Visible = true;
+					grdEmployeeDetailDisplay.Rows.Add();
                     for (int j = 0; j < pAllUserPersonalDetails[i].Count; j++)
                     {
                         grdEmployeeDetailDisplay.Rows[i].Cells[j].Value = pAllUserPersonalDetails[i][j].ToString();
@@ -106,7 +112,9 @@ namespace AES_Management_System
         }
 		#endregion
 
+		#region "Data Grid View:"
 		private void grdEmployeeDetailDisplay_CellContentClick(object sender, DataGridViewCellEventArgs e)
+			//=================================================================================================
 		{
 			if (e.ColumnIndex == 9)
 			{
@@ -117,16 +125,22 @@ namespace AES_Management_System
 			}
 			if (e.ColumnIndex == 10)
 			{
-				int pUserId = Convert.ToInt32(grdEmployeeDetailDisplay.Rows[e.RowIndex].Cells[e.ColumnIndex - 10].Value.ToString());
-				Program.gBE.UserId = pUserId;
-				if (mBA.DeleteUser(Program.gBE) > 0)
+				MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+				DialogResult result = MessageBox.Show("Are you sure you want to delete?", "User Deletion", buttons, MessageBoxIcon.Warning);
+				if (result == System.Windows.Forms.DialogResult.Yes)
 				{
-					MessageBox.Show("User Deleted Successufully.");
-					this.Hide();
-					frmEmployeeDetails pFrmEmployeeDetails = new frmEmployeeDetails();
-					pFrmEmployeeDetails.ShowDialog();
+					int pUserId = Convert.ToInt32(grdEmployeeDetailDisplay.Rows[e.RowIndex].Cells[e.ColumnIndex - 10].Value.ToString());
+					Program.gBE.UserId = pUserId;
+					if (mBA.DeleteUser(Program.gBE) > 0)
+					{
+						MessageBox.Show("User Deleted Successufully.");
+						this.Hide();
+						frmEmployeeDetails pFrmEmployeeDetails = new frmEmployeeDetails();
+						pFrmEmployeeDetails.ShowDialog();
+					}
 				}
 			}
 		}
+#endregion
 	}
 }
