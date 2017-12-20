@@ -303,5 +303,17 @@ namespace DALayer
 			con.Close();
 			return i;
 		}
+		public string IsDeleteAdmin(clsBE BE_In)
+		//==============================
+		{
+			con.Open();
+			int pUserId = BE_In.UserId;
+			SqlCommand cmd = new SqlCommand("select fldUserRole from tblUserLogin where fldUserId='" + pUserId + "'", con);
+			SqlDataAdapter da = new SqlDataAdapter(cmd);
+			DataTable dt = new DataTable();
+			da.Fill(dt);
+			con.Close();
+			return dt.Rows[0][0].ToString();
+		}
 	}
 }

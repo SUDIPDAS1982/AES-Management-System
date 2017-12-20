@@ -52,6 +52,9 @@
 			this.lnklblExit = new System.Windows.Forms.LinkLabel();
 			this.lnklblBack = new System.Windows.Forms.LinkLabel();
 			this.cmbQualification = new System.Windows.Forms.ComboBox();
+			this.lblAge = new System.Windows.Forms.Label();
+			this.txtAge = new System.Windows.Forms.TextBox();
+			this.lblYears = new System.Windows.Forms.Label();
 			this.grpGender.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -142,7 +145,7 @@
 			// 
 			// txtContactNumber
 			// 
-			this.txtContactNumber.Location = new System.Drawing.Point(156, 322);
+			this.txtContactNumber.Location = new System.Drawing.Point(156, 311);
 			this.txtContactNumber.Name = "txtContactNumber";
 			this.txtContactNumber.Size = new System.Drawing.Size(100, 20);
 			this.txtContactNumber.TabIndex = 13;
@@ -150,7 +153,7 @@
 			// lblContactNumber
 			// 
 			this.lblContactNumber.AutoSize = true;
-			this.lblContactNumber.Location = new System.Drawing.Point(63, 322);
+			this.lblContactNumber.Location = new System.Drawing.Point(63, 311);
 			this.lblContactNumber.Name = "lblContactNumber";
 			this.lblContactNumber.Size = new System.Drawing.Size(87, 13);
 			this.lblContactNumber.TabIndex = 12;
@@ -158,7 +161,7 @@
 			// 
 			// txtEmailId
 			// 
-			this.txtEmailId.Location = new System.Drawing.Point(156, 376);
+			this.txtEmailId.Location = new System.Drawing.Point(156, 349);
 			this.txtEmailId.Name = "txtEmailId";
 			this.txtEmailId.Size = new System.Drawing.Size(208, 20);
 			this.txtEmailId.TabIndex = 15;
@@ -166,7 +169,7 @@
 			// lblEmailId
 			// 
 			this.lblEmailId.AutoSize = true;
-			this.lblEmailId.Location = new System.Drawing.Point(63, 376);
+			this.lblEmailId.Location = new System.Drawing.Point(63, 349);
 			this.lblEmailId.Name = "lblEmailId";
 			this.lblEmailId.Size = new System.Drawing.Size(47, 13);
 			this.lblEmailId.TabIndex = 14;
@@ -175,7 +178,7 @@
 			// lblQualification
 			// 
 			this.lblQualification.AutoSize = true;
-			this.lblQualification.Location = new System.Drawing.Point(63, 429);
+			this.lblQualification.Location = new System.Drawing.Point(63, 385);
 			this.lblQualification.Name = "lblQualification";
 			this.lblQualification.Size = new System.Drawing.Size(91, 13);
 			this.lblQualification.TabIndex = 16;
@@ -236,7 +239,7 @@
 			// 
 			// cmdSave
 			// 
-			this.cmdSave.Location = new System.Drawing.Point(265, 481);
+			this.cmdSave.Location = new System.Drawing.Point(265, 425);
 			this.cmdSave.Name = "cmdSave";
 			this.cmdSave.Size = new System.Drawing.Size(75, 23);
 			this.cmdSave.TabIndex = 20;
@@ -276,16 +279,45 @@
             "BACHELOR",
             "12TH STANDARDS",
             "10TH STANDARDS"});
-			this.cmbQualification.Location = new System.Drawing.Point(156, 429);
+			this.cmbQualification.Location = new System.Drawing.Point(156, 385);
 			this.cmbQualification.Name = "cmbQualification";
 			this.cmbQualification.Size = new System.Drawing.Size(127, 21);
 			this.cmbQualification.TabIndex = 23;
+			// 
+			// lblAge
+			// 
+			this.lblAge.AutoSize = true;
+			this.lblAge.Location = new System.Drawing.Point(388, 269);
+			this.lblAge.Name = "lblAge";
+			this.lblAge.Size = new System.Drawing.Size(29, 13);
+			this.lblAge.TabIndex = 24;
+			this.lblAge.Text = "Age:";
+			// 
+			// txtAge
+			// 
+			this.txtAge.Location = new System.Drawing.Point(434, 269);
+			this.txtAge.Name = "txtAge";
+			this.txtAge.ReadOnly = true;
+			this.txtAge.Size = new System.Drawing.Size(47, 20);
+			this.txtAge.TabIndex = 25;
+			// 
+			// lblYears
+			// 
+			this.lblYears.AutoSize = true;
+			this.lblYears.Location = new System.Drawing.Point(487, 269);
+			this.lblYears.Name = "lblYears";
+			this.lblYears.Size = new System.Drawing.Size(22, 13);
+			this.lblYears.TabIndex = 26;
+			this.lblYears.Text = "Yrs";
 			// 
 			// frmEmployeeEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(708, 516);
+			this.ClientSize = new System.Drawing.Size(708, 459);
+			this.Controls.Add(this.lblYears);
+			this.Controls.Add(this.txtAge);
+			this.Controls.Add(this.lblAge);
 			this.Controls.Add(this.cmbQualification);
 			this.Controls.Add(this.lnklblExit);
 			this.Controls.Add(this.lnklblBack);
@@ -344,5 +376,8 @@
 		private System.Windows.Forms.LinkLabel lnklblExit;
 		private System.Windows.Forms.LinkLabel lnklblBack;
 		private System.Windows.Forms.ComboBox cmbQualification;
+		private System.Windows.Forms.Label lblAge;
+		private System.Windows.Forms.TextBox txtAge;
+		private System.Windows.Forms.Label lblYears;
 	}
 }

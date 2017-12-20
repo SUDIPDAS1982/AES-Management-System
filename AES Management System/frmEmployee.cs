@@ -133,7 +133,7 @@ namespace AES_Management_System
 		#region "Link Label:"
 		private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			Application.Exit();
+			Application.Restart();
 		}
 #endregion
 	}

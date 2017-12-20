@@ -47,8 +47,8 @@ namespace AES_Management_System
         private void mnuExit_Click(object sender, EventArgs e)
 			//====================================================
         {
-            Application.Exit();
-        }
+			Application.Restart();
+		}
 		
 
 		private void mnuDeleteEmployee_Click(object sender, EventArgs e)

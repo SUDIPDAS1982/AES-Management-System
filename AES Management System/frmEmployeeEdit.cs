@@ -49,6 +49,7 @@ namespace AES_Management_System
 				optOther.Checked = true;
 			}
 			txtDateOfBirth.Text= pSingleUserPersonalDetails[0][5].ToString();
+			txtAge.Text = (Convert.ToDateTime(DateTime.Now.ToShortDateString()).Year - Convert.ToDateTime(txtDateOfBirth.Text).Year).ToString();
 			txtContactNumber.Text= pSingleUserPersonalDetails[0][6].ToString();
 			txtEmailId.Text= pSingleUserPersonalDetails[0][7].ToString();
 			cmbQualification.Text= pSingleUserPersonalDetails[0][8].ToString();
@@ -59,7 +60,7 @@ namespace AES_Management_System
 		private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 			//===============================================================================
 		{
-			Application.Exit();
+			Application.Restart();
 		}
 
 		private void lnklblBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -74,6 +75,7 @@ namespace AES_Management_System
 			//=================================================================
 		{
 			txtDateOfBirth.Text = dtpDateOfBirth.Value.ToString();
+			txtAge.Text = (Convert.ToDateTime(DateTime.Now.ToShortDateString()).Year - Convert.ToDateTime(dtpDateOfBirth.Text).Year).ToString(); ;
 		}
 		#endregion
 
@@ -91,6 +93,13 @@ namespace AES_Management_System
 			{
 				MessageBox.Show("Please input 6 digit integer value as Pincode.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				txtPincode.Focus();
+				return;
+			}
+			DateTime pDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+			if (Convert.ToDateTime(dtpDateOfBirth.Text).Year > pDate.Year-18)
+			{
+				MessageBox.Show("User Age should be Minimum 18 Years. Please input Proper Date of Birth.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				dtpDateOfBirth.Focus();
 				return;
 			}
 			if (!Regex.Match(txtContactNumber.Text, @"^\d{10}$").Success)

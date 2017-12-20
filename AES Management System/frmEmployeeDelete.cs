@@ -28,7 +28,7 @@ namespace AES_Management_System
 		private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		//===============================================================================
 		{
-			Application.Exit();
+			Application.Restart();
 		}
 
 		private void lnklblBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -76,19 +76,34 @@ namespace AES_Management_System
 			//=======================================================
 		{
 			int pUserId = Convert.ToInt32(txtUserId.Text);
+			Program.gBE.UserId = pUserId;
 			MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-			DialogResult result = MessageBox.Show("Are you sure you want to delete?", "User Deletion", buttons, MessageBoxIcon.Warning);
-			if (result == System.Windows.Forms.DialogResult.Yes)
+			if (mBA.IsDeleteAdmin(Program.gBE) == "ADMIN")
 			{
-				Program.gBE.UserId = pUserId;
-				if (mBA.DeleteUser(Program.gBE) > 0)
+				DialogResult result = MessageBox.Show("Are you sure you want to delete? Admin deletion will forcefully sign out the application. You have to re-login again.", "Admin Deletion", buttons, MessageBoxIcon.Warning);
+				if (result == System.Windows.Forms.DialogResult.Yes)
 				{
-					MessageBox.Show("User Deleted Successufully.");
-					this.Hide();
-					frmEmployeeDelete pFrmEmployeeDelete = new frmEmployeeDelete();
-					pFrmEmployeeDelete.ShowDialog();
+					if (mBA.DeleteUser(Program.gBE) > 0)
+					{
+						MessageBox.Show("Admin Deleted Successufully.");
+						Application.Restart();
+					}
 				}
 			}
+			else
+			{
+				DialogResult result = MessageBox.Show("Are you sure you want to delete?", "User Deletion", buttons, MessageBoxIcon.Warning);
+				if (result == System.Windows.Forms.DialogResult.Yes)
+				{
+					if (mBA.DeleteUser(Program.gBE) > 0)
+					{
+						MessageBox.Show("User Deleted Successufully.");
+						this.Hide();
+						frmEmployeeDelete pFrmEmployeeDelete = new frmEmployeeDelete();
+						pFrmEmployeeDelete.ShowDialog();
+					}
+				}
+			}			
 		}
 #endregion
 	}
