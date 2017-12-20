@@ -17,11 +17,13 @@ namespace AES_Management_System
 		//=======================================
 	{
 		public clsBA mBA = new clsBA();
+		string mFormName;
 
 		#region "Constructor:"
-		public frmEmployeeEdit()
-			//=======================
+		public frmEmployeeEdit(string pFormName_In)
+			//======================================
 		{
+			mFormName = pFormName_In;
 			InitializeComponent();
 		}
 		#endregion
@@ -30,29 +32,48 @@ namespace AES_Management_System
 		private void frmEmployeeEdit_Load(object sender, EventArgs e)
 			//=========================================================
 		{
-			List<List<string>> pSingleUserPersonalDetails = new List<List<string>>();
-			pSingleUserPersonalDetails = mBA.GetSingleUserPersonalDetails(Program.gBE);
-			txtId.Text = pSingleUserPersonalDetails[0][0].ToString();
-			txtFullName.Text= pSingleUserPersonalDetails[0][1].ToString();
-			txtAddress.Text= pSingleUserPersonalDetails[0][2].ToString();
-			txtPincode.Text= pSingleUserPersonalDetails[0][3].ToString();
-			if (pSingleUserPersonalDetails[0][4].ToString().Trim() == "MALE")
+			if (mFormName == "Employee Details")
 			{
-				optMale.Checked = true;
-			}
-			else if (pSingleUserPersonalDetails[0][4].ToString().Trim() == "FEMALE")
-			{
-				optFemale.Checked = true;
+				List<List<string>> pSingleUserPersonalDetails = new List<List<string>>();
+				pSingleUserPersonalDetails = mBA.GetSingleUserPersonalDetails(Program.gBE);
+				txtId.Text = pSingleUserPersonalDetails[0][0].ToString();
+				txtFullName.Text = pSingleUserPersonalDetails[0][1].ToString();
+				txtAddress.Text = pSingleUserPersonalDetails[0][2].ToString();
+				txtPincode.Text = pSingleUserPersonalDetails[0][3].ToString();
+				if (pSingleUserPersonalDetails[0][4].ToString().Trim() == "MALE")
+				{
+					optMale.Checked = true;
+				}
+				else if (pSingleUserPersonalDetails[0][4].ToString().Trim() == "FEMALE")
+				{
+					optFemale.Checked = true;
+				}
+				else
+				{
+					optOther.Checked = true;
+				}
+				txtDateOfBirth.Text = pSingleUserPersonalDetails[0][5].ToString();
+				txtAge.Text = (Convert.ToDateTime(DateTime.Now.ToShortDateString()).Year - Convert.ToDateTime(txtDateOfBirth.Text).Year).ToString();
+				txtContactNumber.Text = pSingleUserPersonalDetails[0][6].ToString();
+				txtEmailId.Text = pSingleUserPersonalDetails[0][7].ToString();
+				cmbQualification.Text = pSingleUserPersonalDetails[0][8].ToString();
 			}
 			else
 			{
-				optOther.Checked = true;
+				cmbUserId.Visible = true;
+				txtId.Visible = false;
+				grpUserInformation.Visible = false;
+				cmdSave.Visible = false;
+				cmdShow.Visible = true;
+				Dictionary<string, string> pUserIdName = new Dictionary<string, string>();
+				pUserIdName = mBA.GetUserIdName();
+				for (int i = 0; i < pUserIdName.Count; i++)
+				{
+					cmbUserId.DataSource = new BindingSource(pUserIdName, null);
+					cmbUserId.ValueMember = "key";
+					cmbUserId.DisplayMember = "key";
+				}
 			}
-			txtDateOfBirth.Text= pSingleUserPersonalDetails[0][5].ToString();
-			txtAge.Text = (Convert.ToDateTime(DateTime.Now.ToShortDateString()).Year - Convert.ToDateTime(txtDateOfBirth.Text).Year).ToString();
-			txtContactNumber.Text= pSingleUserPersonalDetails[0][6].ToString();
-			txtEmailId.Text= pSingleUserPersonalDetails[0][7].ToString();
-			cmbQualification.Text= pSingleUserPersonalDetails[0][8].ToString();
 		}
 		#endregion
 
@@ -141,6 +162,44 @@ namespace AES_Management_System
 				pFrmEmployeeDetails.ShowDialog();
 			}
 		}
-#endregion
+		private void cmdShow_Click(object sender, EventArgs e)
+			//====================================================
+		{
+			grpUserInformation.Visible = true;
+			cmdSave.Visible = true;
+			Program.gBE.UserId = Convert.ToInt32(cmbUserId.SelectedValue);
+			List<List<string>> pSingleUserPersonalDetails = new List<List<string>>();
+			pSingleUserPersonalDetails = mBA.GetSingleUserPersonalDetails(Program.gBE);
+			txtFullName.Enabled = true;
+			txtFullName.Text = pSingleUserPersonalDetails[0][1].ToString();
+			txtAddress.Text = pSingleUserPersonalDetails[0][2].ToString();
+			txtPincode.Text = pSingleUserPersonalDetails[0][3].ToString();
+			if (pSingleUserPersonalDetails[0][4].ToString().Trim() == "MALE")
+			{
+				optMale.Checked = true;
+			}
+			else if (pSingleUserPersonalDetails[0][4].ToString().Trim() == "FEMALE")
+			{
+				optFemale.Checked = true;
+			}
+			else
+			{
+				optOther.Checked = true;
+			}
+			txtDateOfBirth.Text = pSingleUserPersonalDetails[0][5].ToString();
+			txtAge.Text = (Convert.ToDateTime(DateTime.Now.ToShortDateString()).Year - Convert.ToDateTime(txtDateOfBirth.Text).Year).ToString();
+			txtContactNumber.Text = pSingleUserPersonalDetails[0][6].ToString();
+			txtEmailId.Text = pSingleUserPersonalDetails[0][7].ToString();
+			cmbQualification.Text = pSingleUserPersonalDetails[0][8].ToString();
+		}
+		#endregion
+
+		#region "Combo Box:"
+		private void cmbUserId_SelectedIndexChanged(object sender, EventArgs e)
+			//======================================================================
+		{
+			
+		}
+		#endregion
 	}
 }

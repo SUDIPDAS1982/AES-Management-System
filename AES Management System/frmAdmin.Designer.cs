@@ -80,6 +80,7 @@
 			this.mnuEditEmployee.Name = "mnuEditEmployee";
 			this.mnuEditEmployee.Size = new System.Drawing.Size(164, 22);
 			this.mnuEditEmployee.Text = "Edit Employee";
+			this.mnuEditEmployee.Click += new System.EventHandler(this.mnuEditEmployee_Click);
 			// 
 			// mnuEmployeeDetails
 			// 
@@ -106,7 +107,7 @@
 			// mnuCheck
 			// 
 			this.mnuCheck.Name = "mnuCheck";
-			this.mnuCheck.Size = new System.Drawing.Size(152, 22);
+			this.mnuCheck.Size = new System.Drawing.Size(107, 22);
 			this.mnuCheck.Text = "Check";
 			// 
 			// mnuLeave

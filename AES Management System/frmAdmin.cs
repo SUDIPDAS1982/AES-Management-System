@@ -63,5 +63,13 @@ namespace AES_Management_System
 			pFrmEmployeeAdd.ShowDialog();
 		}
 		#endregion
+
+		private void mnuEditEmployee_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			string pFormName = "Admin";
+			frmEmployeeEdit pFrmEmployeeEdit = new frmEmployeeEdit(pFormName);
+			pFrmEmployeeEdit.ShowDialog();
+		}
 	}
 }

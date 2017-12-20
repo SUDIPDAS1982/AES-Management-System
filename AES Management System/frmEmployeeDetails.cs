@@ -120,7 +120,8 @@ namespace AES_Management_System
 			{
 				int pUserId = Convert.ToInt32(grdEmployeeDetailDisplay.Rows[e.RowIndex].Cells[e.ColumnIndex - 9].Value.ToString());
 				Program.gBE.UserId = pUserId;
-				frmEmployeeEdit pFrmEmployeeEdit = new frmEmployeeEdit();
+				string pFormName="Employee Details";
+				frmEmployeeEdit pFrmEmployeeEdit = new frmEmployeeEdit(pFormName);
 				pFrmEmployeeEdit.ShowDialog();
 			}
 			if (e.ColumnIndex == 10)
