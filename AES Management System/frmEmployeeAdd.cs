@@ -13,66 +13,38 @@ using System.Text.RegularExpressions;
 
 namespace AES_Management_System
 {
-	public partial class frmEmployeeEdit : Form
-		//=======================================
+	public partial class frmEmployeeAdd : Form
+		//==========================================
 	{
 		public clsBA mBA = new clsBA();
 
 		#region "Constructor:"
-		public frmEmployeeEdit()
-			//=======================
+		public frmEmployeeAdd()
+			//======================
 		{
 			InitializeComponent();
 		}
 		#endregion
 
-		#region "Form Load:"
-		private void frmEmployeeEdit_Load(object sender, EventArgs e)
-			//=========================================================
-		{
-			List<List<string>> pSingleUserPersonalDetails = new List<List<string>>();
-			pSingleUserPersonalDetails = mBA.GetSingleUserPersonalDetails(Program.gBE);
-			txtId.Text = pSingleUserPersonalDetails[0][0].ToString();
-			txtFullName.Text= pSingleUserPersonalDetails[0][1].ToString();
-			txtAddress.Text= pSingleUserPersonalDetails[0][2].ToString();
-			txtPincode.Text= pSingleUserPersonalDetails[0][3].ToString();
-			if (pSingleUserPersonalDetails[0][4].ToString().Trim() == "MALE")
-			{
-				optMale.Checked = true;
-			}
-			else if (pSingleUserPersonalDetails[0][4].ToString().Trim() == "FEMALE")
-			{
-				optFemale.Checked = true;
-			}
-			else
-			{
-				optOther.Checked = true;
-			}
-			txtDateOfBirth.Text= pSingleUserPersonalDetails[0][5].ToString();
-			txtAge.Text = (Convert.ToDateTime(DateTime.Now.ToShortDateString()).Year - Convert.ToDateTime(txtDateOfBirth.Text).Year).ToString();
-			txtContactNumber.Text= pSingleUserPersonalDetails[0][6].ToString();
-			txtEmailId.Text= pSingleUserPersonalDetails[0][7].ToString();
-			cmbQualification.Text= pSingleUserPersonalDetails[0][8].ToString();
-		}
-		#endregion
-
 		#region "Link Label:"
-		private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-			//===============================================================================
-		{
-			Application.Restart();
-		}
 
 		private void lnklblBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		//================================================================================
+			//==================================================================================
 		{
 			this.Hide();
+			frmAdmin pFrmAdmin = new frmAdmin();
+			pFrmAdmin.ShowDialog();
+		}
+
+		private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+			//=====================================================================================
+		{
+			Application.Restart();
 		}
 		#endregion
 
 		#region "Date Time Picker:"
 		private void dtpDateOfBirth_ValueChanged(object sender, EventArgs e)
-			//=================================================================
 		{
 			txtDateOfBirth.Text = dtpDateOfBirth.Value.ToString();
 			txtAge.Text = (Convert.ToDateTime(DateTime.Now.ToShortDateString()).Year - Convert.ToDateTime(dtpDateOfBirth.Text).Year).ToString();
@@ -81,9 +53,8 @@ namespace AES_Management_System
 
 		#region "Command Button:"
 		private void cmdSave_Click(object sender, EventArgs e)
-			//===================================================
 		{
-			if (txtAddress.Text == "" || txtPincode.Text=="" || txtDateOfBirth.Text=="" ||txtContactNumber.Text=="" || txtEmailId.Text=="")
+			if (cmbUserRole.Text=="" || txtFullName.Text=="" || txtAddress.Text == "" || txtPincode.Text == "" || txtDateOfBirth.Text == "" || txtContactNumber.Text == "" || txtEmailId.Text == "" || cmbQualification.Text=="")
 			{
 				MessageBox.Show("Please fill in all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				txtAddress.Focus();
@@ -96,10 +67,15 @@ namespace AES_Management_System
 				return;
 			}
 			DateTime pDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-			if (Convert.ToDateTime(dtpDateOfBirth.Text).Year > pDate.Year-18)
+			if (Convert.ToDateTime(dtpDateOfBirth.Text).Year > pDate.Year - 18)
 			{
 				MessageBox.Show("User Age should be Minimum 18 Years. Please input Proper Date of Birth.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				dtpDateOfBirth.Focus();
+				return;
+			}
+			if (optMale.Checked == false && optFemale.Checked == false && optOther.Checked == false)
+			{
+				MessageBox.Show("Please select User Gender.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 			if (!Regex.Match(txtContactNumber.Text, @"^\d{10}$").Success)
@@ -114,7 +90,8 @@ namespace AES_Management_System
 				txtEmailId.Focus();
 				return;
 			}
-			Program.gBE.UserId = Convert.ToInt32(txtId.Text.ToString());
+			Program.gBE.UserRole = cmbUserRole.SelectedItem.ToString();
+			Program.gBE.UserFullName = txtFullName.Text.ToString();
 			Program.gBE.UserAddress = txtAddress.Text.ToString();
 			Program.gBE.UserPincode = Convert.ToInt32(txtPincode.Text.ToString());
 			if (optMale.Checked == true)
@@ -133,13 +110,21 @@ namespace AES_Management_System
 			Program.gBE.UserContactNo = Convert.ToInt64(txtContactNumber.Text.ToString());
 			Program.gBE.UserEmail = txtEmailId.Text.ToString();
 			Program.gBE.UserQualification = cmbQualification.SelectedItem.ToString();
-			if (mBA.EditUserPersonalDetails(Program.gBE) > 0)
+			int pUserId = mBA.AddUserPersonalDetails(Program.gBE);
+			if (pUserId > 0)
 			{
-				MessageBox.Show("User Personal Details Updated Successufully.");
+				MessageBox.Show("User Personal Details Added Successufully. New User Id Is: " + pUserId, "Add User", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				this.Hide();
-				frmEmployeeDetails pFrmEmployeeDetails = new frmEmployeeDetails();
-				pFrmEmployeeDetails.ShowDialog();
+				frmEmployeeAdd pFrmEmployeeAdd = new frmEmployeeAdd();
+				pFrmEmployeeAdd.ShowDialog();
 			}
+		}
+#endregion
+
+		#region "Form Load:"
+		private void frmEmployeeAdd_Load(object sender, EventArgs e)
+		{
+			
 		}
 #endregion
 	}

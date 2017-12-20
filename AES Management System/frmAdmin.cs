@@ -48,15 +48,19 @@ namespace AES_Management_System
 			//====================================================
         {
 			Application.Restart();
-		}
-		
-
+		}	
 		private void mnuDeleteEmployee_Click(object sender, EventArgs e)
 			//==============================================================
 		{
 			this.Hide();
 			frmEmployeeDelete pFrmEmployeeDelete = new frmEmployeeDelete();
 			pFrmEmployeeDelete.ShowDialog();
+		}
+		private void mnuAddEmployee_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			frmEmployeeAdd pFrmEmployeeAdd = new frmEmployeeAdd();
+			pFrmEmployeeAdd.ShowDialog();
 		}
 		#endregion
 	}

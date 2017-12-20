@@ -31,6 +31,17 @@ namespace BELayer
         }
 		#endregion
 
+		#region "User Role Property:"
+		public string _UserRole;
+
+		public string UserRole
+		//===================
+		{
+			get { return _UserRole; }
+			set { _UserRole = value; }
+		}
+		#endregion
+
 		#region "User Id Property:"
 		public int _UserId;
 
@@ -40,6 +51,17 @@ namespace BELayer
             get { return _UserId; }
             set { _UserId = value; }
         }
+		#endregion
+
+		#region "User Full Name Property:"
+		public string _UserFullName;
+
+		public string UserFullName
+		//============================
+		{
+			get { return _UserFullName; }
+			set { _UserFullName = value; }
+		}
 		#endregion
 
 		#region "User Address Property:"

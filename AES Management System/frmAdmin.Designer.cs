@@ -73,6 +73,7 @@
 			this.mnuAddEmployee.Name = "mnuAddEmployee";
 			this.mnuAddEmployee.Size = new System.Drawing.Size(164, 22);
 			this.mnuAddEmployee.Text = "Add Employee";
+			this.mnuAddEmployee.Click += new System.EventHandler(this.mnuAddEmployee_Click);
 			// 
 			// mnuEditEmployee
 			// 
@@ -105,7 +106,7 @@
 			// mnuCheck
 			// 
 			this.mnuCheck.Name = "mnuCheck";
-			this.mnuCheck.Size = new System.Drawing.Size(107, 22);
+			this.mnuCheck.Size = new System.Drawing.Size(152, 22);
 			this.mnuCheck.Text = "Check";
 			// 
 			// mnuLeave

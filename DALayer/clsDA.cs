@@ -315,5 +315,38 @@ namespace DALayer
 			con.Close();
 			return dt.Rows[0][0].ToString();
 		}
+		public int AddUserPersonalDetails(clsBE BE_In)
+		//===============================================
+		{
+			con.Open();
+			string pUserRole = BE_In.UserRole;
+			bool pUserActive = true;
+			String pUserFullName = BE_In.UserFullName;
+			string pUserAddress = BE_In.UserAddress;
+			int pUserPincode = BE_In.UserPincode;
+			string pUserGender = BE_In.UserGender;
+			DateTime pUserDOB = BE_In.UserDOB;
+			Int64 pUserContactNo = BE_In.UserContactNo;
+			string pUserEmail = BE_In.UserEmail;
+			string pUserQualification = BE_In.UserQualification;
+			SqlCommand cmd = new SqlCommand("insert into tblUserPersonalDetails (fldFullName, fldAddress, fldPincode, fldGender, fldDOB, fldContactNo, fldEmail, fldQualification) values ('"+pUserFullName+"','" + pUserAddress + "','" + pUserPincode + "','" + pUserGender + "','" + pUserDOB + "','" + pUserContactNo + "','" + pUserEmail + "','" + pUserQualification + "')", con);
+			int i = 0;
+			i = cmd.ExecuteNonQuery();
+			if (i > 0)
+			{
+				cmd = new SqlCommand("insert into tblUserLogin (fldUserRole, fldUserActive) values('" + pUserRole + "','" + pUserActive + "')", con);
+				i = cmd.ExecuteNonQuery();
+			}
+			if (i > 0)
+			{
+				cmd = new SqlCommand("select MAX(fldUserId) from tblUserLogin", con);
+				SqlDataAdapter da = new SqlDataAdapter(cmd);
+				DataTable dt = new DataTable();
+				da.Fill(dt);
+				i = Convert.ToInt32(dt.Rows[0][0].ToString());
+			}
+			con.Close();
+			return i;
+		}
 	}
 }

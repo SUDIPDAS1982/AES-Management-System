@@ -117,5 +117,10 @@ namespace BALayer
 		{
 			return mDA.IsDeleteAdmin(BE_In);
 		}
+		public int AddUserPersonalDetails(clsBE BE_In)
+		//===============================================
+		{
+			return mDA.AddUserPersonalDetails(BE_In);
+		}
 	}
 }
