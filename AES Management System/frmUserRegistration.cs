@@ -99,6 +99,7 @@ namespace AES_Management_System
 		}
 		#endregion
 
+		#region "Command Button:"
 		private void cmdRegister_Click(object sender, EventArgs e)
 		{
 			Program.gBE.UserId = Convert.ToInt32(txtUserId.Text);
@@ -117,5 +118,6 @@ namespace AES_Management_System
 				pFrmLogin.ShowDialog();
 			}
 		}
+#endregion
 	}
 }
