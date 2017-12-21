@@ -35,7 +35,7 @@
 			this.mnuEmployeeDetails = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuDeleteEmployee = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuAttendance = new System.Windows.Forms.ToolStripMenuItem();
-			this.mnuCheck = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuAttendanceCheck = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuLeave = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuLeaveSummary = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuLeaveHistory = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,16 +99,17 @@
 			// mnuAttendance
 			// 
 			this.mnuAttendance.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuCheck});
+            this.mnuAttendanceCheck});
 			this.mnuAttendance.Name = "mnuAttendance";
 			this.mnuAttendance.Size = new System.Drawing.Size(80, 20);
 			this.mnuAttendance.Text = "Attendance";
 			// 
-			// mnuCheck
+			// mnuAttendanceCheck
 			// 
-			this.mnuCheck.Name = "mnuCheck";
-			this.mnuCheck.Size = new System.Drawing.Size(107, 22);
-			this.mnuCheck.Text = "Check";
+			this.mnuAttendanceCheck.Name = "mnuAttendanceCheck";
+			this.mnuAttendanceCheck.Size = new System.Drawing.Size(152, 22);
+			this.mnuAttendanceCheck.Text = "Check";
+			this.mnuAttendanceCheck.Click += new System.EventHandler(this.mnuAttendanceCheck_Click);
 			// 
 			// mnuLeave
 			// 
@@ -175,7 +176,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuEmployeeDetails;
         private System.Windows.Forms.ToolStripMenuItem mnuDeleteEmployee;
         private System.Windows.Forms.ToolStripMenuItem mnuAttendance;
-        private System.Windows.Forms.ToolStripMenuItem mnuCheck;
+        private System.Windows.Forms.ToolStripMenuItem mnuAttendanceCheck;
         private System.Windows.Forms.ToolStripMenuItem mnuLeave;
         private System.Windows.Forms.ToolStripMenuItem mnuLeaveSummary;
         private System.Windows.Forms.ToolStripMenuItem mnuLeaveHistory;

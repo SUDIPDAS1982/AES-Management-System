@@ -34,6 +34,7 @@ namespace AES_Management_System
 		{
 			if (mFormName == "Employee Details")
 			{
+				lnklblAdminBack.Visible = false;
 				List<List<string>> pSingleUserPersonalDetails = new List<List<string>>();
 				pSingleUserPersonalDetails = mBA.GetSingleUserPersonalDetails(Program.gBE);
 				txtId.Text = pSingleUserPersonalDetails[0][0].ToString();
@@ -60,6 +61,7 @@ namespace AES_Management_System
 			}
 			else
 			{
+				lnklblBack.Visible = false;
 				cmbUserId.Visible = true;
 				txtId.Visible = false;
 				grpUserInformation.Visible = false;
@@ -88,6 +90,12 @@ namespace AES_Management_System
 		//================================================================================
 		{
 			this.Hide();
+		}
+		private void lnklblAdminBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			this.Hide();
+			frmAdmin pFrmAdmin = new frmAdmin();
+			pFrmAdmin.ShowDialog();
 		}
 		#endregion
 
@@ -201,5 +209,6 @@ namespace AES_Management_System
 			
 		}
 		#endregion
+
 	}
 }

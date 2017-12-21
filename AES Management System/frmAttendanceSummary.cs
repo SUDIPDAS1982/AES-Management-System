@@ -16,20 +16,26 @@ namespace AES_Management_System
 		//==============================================
     {
         public clsBA mBA = new clsBA();
+		string mFormName;
 
 		#region "Constructor:"
-		public frmAttendanceSummary()
-			//============================
+		public frmAttendanceSummary(string pFormName_In)
+			//==========================================
         {
-            InitializeComponent();
+			mFormName = pFormName_In;
+			InitializeComponent();
         }
 		#endregion
 
 		#region "Command Button:"
 
         private void cmdShow_Click(object sender, EventArgs e)
-			//====================================================
-        {
+		//====================================================
+		{
+			if (mFormName == "Admin")
+			{
+				Program.gBE.UserId = Convert.ToInt32(cmbUserId.SelectedValue.ToString());
+			}
 			grdAttendanceSummary.Columns[5].Visible = false;
 			grdAttendanceSummary.Rows.Clear();
             grdAttendanceSummary.Visible = true;
@@ -137,11 +143,40 @@ namespace AES_Management_System
 			frmEmployee pFrmEmployee = new frmEmployee();
 			pFrmEmployee.ShowDialog();
 		}
-
+		private void lnklblAdminBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			this.Hide();
+			frmAdmin pFrmAdmin = new frmAdmin();
+			pFrmAdmin.ShowDialog();
+		}
 		private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			Application.Restart();
 		}
-#endregion
+		#endregion
+
+		private void frmAttendanceSummary_Load(object sender, EventArgs e)
+		{
+			if (mFormName == "Admin")
+			{
+				lnklblBack.Visible = false;
+				lblUserId.Visible = true;
+				cmbUserId.Visible = true;
+				Dictionary<string, string> pUserIdName = new Dictionary<string, string>();
+				pUserIdName = mBA.GetUserIdName();
+				for (int i = 0; i < pUserIdName.Count; i++)
+				{
+					cmbUserId.DataSource = new BindingSource(pUserIdName, null);
+					cmbUserId.ValueMember = "key";
+					cmbUserId.DisplayMember = "value";
+				}
+			}
+			else
+			{
+				lnklblAdminBack.Visible = false;
+			}
+		}
+
+		
 	}
 }

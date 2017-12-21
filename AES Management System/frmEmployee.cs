@@ -125,7 +125,8 @@ namespace AES_Management_System
 			//=================================================================
         {
             this.Hide();
-            frmAttendanceSummary pFrmAttendanceDetails = new frmAttendanceSummary();
+			string pFormName = "Employee";
+            frmAttendanceSummary pFrmAttendanceDetails = new frmAttendanceSummary(pFormName);
             pFrmAttendanceDetails.ShowDialog();
         }
 		#endregion

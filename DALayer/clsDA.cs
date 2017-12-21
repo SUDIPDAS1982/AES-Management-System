@@ -23,13 +23,12 @@ namespace DALayer
             string pUserName = BE_In.UserName;
             string pPassword = BE_In.Password;
             
-            SqlCommand cmd = new SqlCommand("select fldUserName,fldUserPassword from tblUserLogin where fldUserName='" + pUserName + "'and fldUserPassword='" + pPassword + "'", con);
+            SqlCommand cmd = new SqlCommand("select fldUserId from tblUserLogin where fldUserName='" + pUserName + "'and fldUserPassword='" + pPassword + "'", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            int i = dt.Rows.Count;
             con.Close();
-            return i;
+			return Convert.ToInt32(dt.Rows[0][0].ToString());
         }
         public string IsAdmin(clsBE BE_In)
             //==============================
@@ -237,8 +236,9 @@ namespace DALayer
         {
             List<List<string>> pSingleUserAttendanceSummary = new List<List<string>>();
             con.Open();
-            String pUserName = BE_In.UserName;
-            SqlCommand cmd = new SqlCommand("select fldUserId, fldUserName, fldLoginDate, fldLoginTime, fldLogoutTime from tblUserAttendanceSummary where fldUserName='" + pUserName + "' and fldLoginDate between '" + pFromDate_In + "' and '" + pToDate_In + "'", con);
+			//String pUserName = BE_In.UserName;
+			int pUserId = BE_In.UserId;
+            SqlCommand cmd = new SqlCommand("select fldUserId, fldUserName, fldLoginDate, fldLoginTime, fldLogoutTime from tblUserAttendanceSummary where fldUserId='" + pUserId + "' and fldLoginDate between '" + pFromDate_In + "' and '" + pToDate_In + "'", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -259,8 +259,9 @@ namespace DALayer
 		{
 			List<List<string>> pSingleUserAttendanceDetails = new List<List<string>>();
 			con.Open();
-			String pUserName = BE_In.UserName;
-			SqlCommand cmd = new SqlCommand("select fldUserName, fldLoginDate, fldLoginTime, fldLoginRemarks, fldLogoutTime, fldLogoutRemarks from tblUserAttendanceDetails where fldUserName='" + pUserName + "' and fldLoginDate='" + pLoginDate_In + "'", con);
+			//String pUserName = BE_In.UserName;
+			int pUserId = BE_In.UserId;
+			SqlCommand cmd = new SqlCommand("select fldUserName, fldLoginDate, fldLoginTime, fldLoginRemarks, fldLogoutTime, fldLogoutRemarks from tblUserAttendanceDetails where fldUserId='" + pUserId + "' and fldLoginDate='" + pLoginDate_In + "'", con);
 			SqlDataAdapter da = new SqlDataAdapter(cmd);
 			DataTable dt = new DataTable();
 			da.Fill(dt);

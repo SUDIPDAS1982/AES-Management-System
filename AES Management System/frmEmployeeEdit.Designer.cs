@@ -58,6 +58,7 @@
 			this.cmbUserId = new System.Windows.Forms.ComboBox();
 			this.grpUserInformation = new System.Windows.Forms.GroupBox();
 			this.cmdShow = new System.Windows.Forms.Button();
+			this.lnklblAdminBack = new System.Windows.Forms.LinkLabel();
 			this.grpGender.SuspendLayout();
 			this.grpUserInformation.SuspendLayout();
 			this.SuspendLayout();
@@ -363,11 +364,23 @@
 			this.cmdShow.Visible = false;
 			this.cmdShow.Click += new System.EventHandler(this.cmdShow_Click);
 			// 
+			// lnklblAdminBack
+			// 
+			this.lnklblAdminBack.AutoSize = true;
+			this.lnklblAdminBack.Location = new System.Drawing.Point(47, 15);
+			this.lnklblAdminBack.Name = "lnklblAdminBack";
+			this.lnklblAdminBack.Size = new System.Drawing.Size(32, 13);
+			this.lnklblAdminBack.TabIndex = 30;
+			this.lnklblAdminBack.TabStop = true;
+			this.lnklblAdminBack.Text = "Back";
+			this.lnklblAdminBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblAdminBack_LinkClicked);
+			// 
 			// frmEmployeeEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(708, 459);
+			this.Controls.Add(this.lnklblAdminBack);
 			this.Controls.Add(this.cmdShow);
 			this.Controls.Add(this.grpUserInformation);
 			this.Controls.Add(this.cmbUserId);
@@ -421,5 +434,6 @@
 		private System.Windows.Forms.ComboBox cmbUserId;
 		private System.Windows.Forms.GroupBox grpUserInformation;
 		private System.Windows.Forms.Button cmdShow;
+		private System.Windows.Forms.LinkLabel lnklblAdminBack;
 	}
 }

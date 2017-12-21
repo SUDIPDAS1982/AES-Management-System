@@ -43,7 +43,6 @@ namespace AES_Management_System
             frmEmployeeDetails pFrmEmployeeDetails = new frmEmployeeDetails();
             pFrmEmployeeDetails.ShowDialog();
         }
-
         private void mnuExit_Click(object sender, EventArgs e)
 			//====================================================
         {
@@ -62,8 +61,6 @@ namespace AES_Management_System
 			frmEmployeeAdd pFrmEmployeeAdd = new frmEmployeeAdd();
 			pFrmEmployeeAdd.ShowDialog();
 		}
-		#endregion
-
 		private void mnuEditEmployee_Click(object sender, EventArgs e)
 		{
 			this.Hide();
@@ -71,5 +68,13 @@ namespace AES_Management_System
 			frmEmployeeEdit pFrmEmployeeEdit = new frmEmployeeEdit(pFormName);
 			pFrmEmployeeEdit.ShowDialog();
 		}
+		private void mnuAttendanceCheck_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			string pFormName = "Admin";
+			frmAttendanceSummary pFrmAttendanceSummary = new frmAttendanceSummary(pFormName);
+			pFrmAttendanceSummary.ShowDialog();
+		}
+		#endregion
 	}
 }

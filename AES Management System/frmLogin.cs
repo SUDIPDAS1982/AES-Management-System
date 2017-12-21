@@ -32,8 +32,10 @@ namespace AES_Management_System
         {
             Program.gBE.UserName = txtUserName.Text;
             Program.gBE.Password = txtPassword.Text;
-            if(mBA.UserLogin(Program.gBE) >0)
+			int pUserId = mBA.UserLogin(Program.gBE);
+			if (pUserId >0)
             {
+				Program.gBE.UserId = pUserId;
                 if(Convert.ToBoolean(mBA.IsUserActive(Program.gBE))==true)
                 {
                     if (mBA.IsAdmin(Program.gBE) == "ADMIN")
