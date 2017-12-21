@@ -67,6 +67,15 @@ namespace AES_Management_System
         {
             Application.Exit();
         }
+		#endregion
+
+		#region "Link Label:"
+		private void lnklblSignUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			this.Hide();
+			frmUserRegistration pFrmUserRegistration = new frmUserRegistration();
+			pFrmUserRegistration.ShowDialog();
+		}
 #endregion
 	}
 }

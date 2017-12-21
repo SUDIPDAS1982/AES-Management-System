@@ -348,5 +348,46 @@ namespace DALayer
 			con.Close();
 			return i;
 		}
+		public Dictionary<string, string> GetNewUserIdName()
+		//==============================================================
+		{
+			Dictionary<string, string> pNewUserIdName = new Dictionary<string, string>();
+			con.Open();
+			SqlCommand cmd = new SqlCommand("select fldId, fldFullName from tblUserPersonalDetails where fldId in (select fldUserId from tblUserLogin where fldUserName is null)", con);
+			SqlDataAdapter da = new SqlDataAdapter(cmd);
+			DataTable dt = new DataTable();
+			da.Fill(dt);
+			for (int i = 0; i < dt.Rows.Count; i++)
+			{
+				pNewUserIdName.Add(dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString());
+			}
+			con.Close();
+			return pNewUserIdName;
+		}
+		public int IsDuplicateUserName(clsBE BE_In)
+		//==========================================
+		{
+			con.Open();
+			string pUserName = BE_In.UserName;
+			SqlCommand cmd = new SqlCommand("select * from tblUserLogin where fldUserName='" + pUserName + "'", con);
+			SqlDataAdapter da = new SqlDataAdapter(cmd);
+			DataTable dt = new DataTable();
+			da.Fill(dt);
+			int i = dt.Rows.Count;
+			con.Close();
+			return i;
+		}
+		public int SetUserNamePassword(clsBE BE_In)
+		//==========================================
+		{
+			con.Open();
+			int pUserId = BE_In.UserId;
+			string pUserName = BE_In.UserName;
+			string pUserPassword = BE_In.Password;
+			SqlCommand cmd = new SqlCommand("update tblUserLogin set fldUserName='" + pUserName + "', fldUserPassword='"+ pUserPassword + "' where fldUserId='" + pUserId + "'", con);
+			int i = cmd.ExecuteNonQuery();
+			con.Close();
+			return i;
+		}
 	}
 }

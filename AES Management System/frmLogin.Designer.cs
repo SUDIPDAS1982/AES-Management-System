@@ -34,6 +34,7 @@
 			this.txtPassword = new System.Windows.Forms.TextBox();
 			this.cmdLogin = new System.Windows.Forms.Button();
 			this.cmdExit = new System.Windows.Forms.Button();
+			this.lnklblSignUp = new System.Windows.Forms.LinkLabel();
 			this.SuspendLayout();
 			// 
 			// lblUserName
@@ -89,11 +90,23 @@
 			this.cmdExit.UseVisualStyleBackColor = true;
 			this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
 			// 
+			// lnklblSignUp
+			// 
+			this.lnklblSignUp.AutoSize = true;
+			this.lnklblSignUp.Location = new System.Drawing.Point(26, 205);
+			this.lnklblSignUp.Name = "lnklblSignUp";
+			this.lnklblSignUp.Size = new System.Drawing.Size(116, 13);
+			this.lnklblSignUp.TabIndex = 6;
+			this.lnklblSignUp.TabStop = true;
+			this.lnklblSignUp.Text = "New To AES? Sign Up";
+			this.lnklblSignUp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblSignUp_LinkClicked);
+			// 
 			// frmLogin
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(271, 247);
+			this.Controls.Add(this.lnklblSignUp);
 			this.Controls.Add(this.cmdExit);
 			this.Controls.Add(this.cmdLogin);
 			this.Controls.Add(this.txtPassword);
@@ -116,6 +129,7 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button cmdLogin;
         private System.Windows.Forms.Button cmdExit;
-    }
+		private System.Windows.Forms.LinkLabel lnklblSignUp;
+	}
 }
 
