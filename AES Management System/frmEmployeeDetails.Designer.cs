@@ -33,8 +33,6 @@
 			this.cmbUser = new System.Windows.Forms.ComboBox();
 			this.cmdDisplay = new System.Windows.Forms.Button();
 			this.grdEmployeeDetailDisplay = new System.Windows.Forms.DataGridView();
-			this.lnklblBack = new System.Windows.Forms.LinkLabel();
-			this.lnklblExit = new System.Windows.Forms.LinkLabel();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +44,9 @@
 			this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column10 = new System.Windows.Forms.DataGridViewButtonColumn();
 			this.Column11 = new System.Windows.Forms.DataGridViewButtonColumn();
+			this.lnklblBack = new System.Windows.Forms.LinkLabel();
+			this.lnklblExit = new System.Windows.Forms.LinkLabel();
+			this.lnklblEmployeeBack = new System.Windows.Forms.LinkLabel();
 			((System.ComponentModel.ISupportInitialize)(this.grdEmployeeDetailDisplay)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -114,28 +115,6 @@
 			this.grdEmployeeDetailDisplay.TabIndex = 4;
 			this.grdEmployeeDetailDisplay.Visible = false;
 			this.grdEmployeeDetailDisplay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdEmployeeDetailDisplay_CellContentClick);
-			// 
-			// lnklblBack
-			// 
-			this.lnklblBack.AutoSize = true;
-			this.lnklblBack.Location = new System.Drawing.Point(62, 9);
-			this.lnklblBack.Name = "lnklblBack";
-			this.lnklblBack.Size = new System.Drawing.Size(32, 13);
-			this.lnklblBack.TabIndex = 5;
-			this.lnklblBack.TabStop = true;
-			this.lnklblBack.Text = "Back";
-			this.lnklblBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblBack_LinkClicked);
-			// 
-			// lnklblExit
-			// 
-			this.lnklblExit.AutoSize = true;
-			this.lnklblExit.Location = new System.Drawing.Point(931, 9);
-			this.lnklblExit.Name = "lnklblExit";
-			this.lnklblExit.Size = new System.Drawing.Size(48, 13);
-			this.lnklblExit.TabIndex = 6;
-			this.lnklblExit.TabStop = true;
-			this.lnklblExit.Text = "Sign Out";
-			this.lnklblExit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblExit_LinkClicked);
 			// 
 			// Column1
 			// 
@@ -208,11 +187,45 @@
 			this.Column11.Visible = false;
 			this.Column11.Width = 50;
 			// 
+			// lnklblBack
+			// 
+			this.lnklblBack.AutoSize = true;
+			this.lnklblBack.Location = new System.Drawing.Point(62, 9);
+			this.lnklblBack.Name = "lnklblBack";
+			this.lnklblBack.Size = new System.Drawing.Size(32, 13);
+			this.lnklblBack.TabIndex = 5;
+			this.lnklblBack.TabStop = true;
+			this.lnklblBack.Text = "Back";
+			this.lnklblBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblBack_LinkClicked);
+			// 
+			// lnklblExit
+			// 
+			this.lnklblExit.AutoSize = true;
+			this.lnklblExit.Location = new System.Drawing.Point(931, 9);
+			this.lnklblExit.Name = "lnklblExit";
+			this.lnklblExit.Size = new System.Drawing.Size(48, 13);
+			this.lnklblExit.TabIndex = 6;
+			this.lnklblExit.TabStop = true;
+			this.lnklblExit.Text = "Sign Out";
+			this.lnklblExit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblExit_LinkClicked);
+			// 
+			// lnklblEmployeeBack
+			// 
+			this.lnklblEmployeeBack.AutoSize = true;
+			this.lnklblEmployeeBack.Location = new System.Drawing.Point(62, 9);
+			this.lnklblEmployeeBack.Name = "lnklblEmployeeBack";
+			this.lnklblEmployeeBack.Size = new System.Drawing.Size(32, 13);
+			this.lnklblEmployeeBack.TabIndex = 7;
+			this.lnklblEmployeeBack.TabStop = true;
+			this.lnklblEmployeeBack.Text = "Back";
+			this.lnklblEmployeeBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblEmployeeBack_LinkClicked);
+			// 
 			// frmEmployeeDetails
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1076, 478);
+			this.Controls.Add(this.lnklblEmployeeBack);
 			this.Controls.Add(this.lnklblExit);
 			this.Controls.Add(this.lnklblBack);
 			this.Controls.Add(this.grdEmployeeDetailDisplay);
@@ -250,5 +263,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
 		private System.Windows.Forms.DataGridViewButtonColumn Column10;
 		private System.Windows.Forms.DataGridViewButtonColumn Column11;
+		private System.Windows.Forms.LinkLabel lnklblEmployeeBack;
 	}
 }

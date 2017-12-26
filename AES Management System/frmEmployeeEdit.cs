@@ -166,7 +166,7 @@ namespace AES_Management_System
 			{
 				MessageBox.Show("User Personal Details Updated Successufully.");
 				this.Hide();
-				frmEmployeeDetails pFrmEmployeeDetails = new frmEmployeeDetails();
+				frmEmployeeDetails pFrmEmployeeDetails = new frmEmployeeDetails(mFormName);
 				pFrmEmployeeDetails.ShowDialog();
 			}
 		}

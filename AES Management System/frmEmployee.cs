@@ -15,6 +15,7 @@ namespace AES_Management_System
     public partial class frmEmployee : Form
     {
         public clsBA mBA = new clsBA();
+		string mFormName = "Employee";
 
 		#region "Constructor:"
 		public frmEmployee()
@@ -32,7 +33,7 @@ namespace AES_Management_System
             string pUserName = mBA.SelectUserName(Program.gBE);
             lblWelcome.Text = "Login As: " + pUserName + "";
             lblInfo.Text="Welcome "+ pUserName + "";
-            try
+			try
             {
                 if (mBA.IsUserLoggedIn(Program.gBE) > 0)
                 {
@@ -125,8 +126,7 @@ namespace AES_Management_System
 			//=================================================================
         {
             this.Hide();
-			string pFormName = "Employee";
-            frmAttendanceSummary pFrmAttendanceDetails = new frmAttendanceSummary(pFormName);
+			frmAttendanceSummary pFrmAttendanceDetails = new frmAttendanceSummary(mFormName);
             pFrmAttendanceDetails.ShowDialog();
         }
 		#endregion
@@ -135,6 +135,15 @@ namespace AES_Management_System
 		private void lnklblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			Application.Restart();
+		}
+		#endregion
+
+		#region "Menu:"
+		private void personalDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			frmEmployeeDetails pFrmEmployeeDetails = new frmEmployeeDetails(mFormName);
+			pFrmEmployeeDetails.ShowDialog();
 		}
 #endregion
 	}

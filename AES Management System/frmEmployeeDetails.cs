@@ -15,12 +15,14 @@ namespace AES_Management_System
 		//============================================
     {
         public clsBA mBA = new clsBA();
+		string mFormName;
 
 		#region "Constructor:"
-		public frmEmployeeDetails()
+		public frmEmployeeDetails(string pFormName_In)
 			//=========================
         {
-            InitializeComponent();
+			mFormName = pFormName_In;
+			InitializeComponent();
         }
 		#endregion
 
@@ -28,13 +30,40 @@ namespace AES_Management_System
 		private void frmEmployeeDetails_Load(object sender, EventArgs e)
 		//================================================================
 		{
-			Dictionary<string, string> pUserIdName = new Dictionary<string, string>();
-			pUserIdName = mBA.GetUserIdName();
-			for (int i = 0; i < pUserIdName.Count; i++)
+			if (mFormName == "Admin")
 			{
-				cmbUser.DataSource = new BindingSource(pUserIdName, null);
-				cmbUser.ValueMember = "key";
-				cmbUser.DisplayMember = "value";
+				lnklblEmployeeBack.Visible = false;
+				Dictionary<string, string> pUserIdName = new Dictionary<string, string>();
+				pUserIdName = mBA.GetUserIdName();
+				for (int i = 0; i < pUserIdName.Count; i++)
+				{
+					cmbUser.DataSource = new BindingSource(pUserIdName, null);
+					cmbUser.ValueMember = "key";
+					cmbUser.DisplayMember = "value";
+				}
+			}
+			else
+			{
+				optAll.Visible = false;
+				optIndividualEmployee.Visible = false;
+				cmbUser.Visible = false;
+				cmdDisplay.Visible = false;
+				lnklblBack.Visible = false;
+				grdEmployeeDetailDisplay.Columns[9].Visible = false;
+				grdEmployeeDetailDisplay.Columns[10].Visible = false;
+				grdEmployeeDetailDisplay.Visible = true;
+				grdEmployeeDetailDisplay.Rows.Clear();
+				List<List<string>> pAllUserPersonalDetails = new List<List<string>>();
+				pAllUserPersonalDetails = mBA.GetSingleUserPersonalDetails(Program.gBE);
+				for (int i = 0; i < pAllUserPersonalDetails.Count; i++)
+				{
+					grdEmployeeDetailDisplay.Rows.Add();
+					for (int j = 0; j < pAllUserPersonalDetails[i].Count; j++)
+					{
+						grdEmployeeDetailDisplay.Rows[i].Cells[j].Value = pAllUserPersonalDetails[i][j].ToString();
+					}
+					grdEmployeeDetailDisplay.AllowUserToAddRows = false;
+				}
 			}
 		}
 		#endregion
@@ -110,6 +139,12 @@ namespace AES_Management_System
             frmAdmin pFrmAdmin = new frmAdmin();
             pFrmAdmin.ShowDialog();
         }
+		private void lnklblEmployeeBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			this.Hide();
+			frmEmployee pFrmEmployee = new frmEmployee();
+			pFrmEmployee.ShowDialog();
+		}
 		#endregion
 
 		#region "Data Grid View:"
@@ -150,13 +185,14 @@ namespace AES_Management_System
 						{
 							MessageBox.Show("User Deleted Successufully.");
 							this.Hide();
-							frmEmployeeDetails pFrmEmployeeDetails = new frmEmployeeDetails();
+							frmEmployeeDetails pFrmEmployeeDetails = new frmEmployeeDetails(mFormName);
 							pFrmEmployeeDetails.ShowDialog();
 						}
 					}
 				}			
 			}
 		}
-#endregion
+		#endregion
+
 	}
 }

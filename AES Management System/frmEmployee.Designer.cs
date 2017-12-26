@@ -36,7 +36,11 @@
 			this.txtRemarks = new System.Windows.Forms.TextBox();
 			this.grpRemarks = new System.Windows.Forms.GroupBox();
 			this.lnklblExit = new System.Windows.Forms.LinkLabel();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.personalDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.grpRemarks.SuspendLayout();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lblWelcome
@@ -116,6 +120,31 @@
 			this.lnklblExit.Text = "Sign Out";
 			this.lnklblExit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblExit_LinkClicked);
 			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.profileToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(495, 24);
+			this.menuStrip1.TabIndex = 10;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// profileToolStripMenuItem
+			// 
+			this.profileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.personalDetailsToolStripMenuItem});
+			this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
+			this.profileToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+			this.profileToolStripMenuItem.Text = "Profile";
+			// 
+			// personalDetailsToolStripMenuItem
+			// 
+			this.personalDetailsToolStripMenuItem.Name = "personalDetailsToolStripMenuItem";
+			this.personalDetailsToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+			this.personalDetailsToolStripMenuItem.Text = "Personal Details";
+			this.personalDetailsToolStripMenuItem.Click += new System.EventHandler(this.personalDetailsToolStripMenuItem_Click);
+			// 
 			// frmEmployee
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,12 +157,16 @@
 			this.Controls.Add(this.cmdTimeIn);
 			this.Controls.Add(this.lblInfo);
 			this.Controls.Add(this.lblWelcome);
+			this.Controls.Add(this.menuStrip1);
+			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "frmEmployee";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Employee Panel";
 			this.Load += new System.EventHandler(this.frmEmployee_Load);
 			this.grpRemarks.ResumeLayout(false);
 			this.grpRemarks.PerformLayout();
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -149,5 +182,8 @@
 		private System.Windows.Forms.TextBox txtRemarks;
 		private System.Windows.Forms.GroupBox grpRemarks;
 		private System.Windows.Forms.LinkLabel lnklblExit;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem profileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem personalDetailsToolStripMenuItem;
 	}
 }

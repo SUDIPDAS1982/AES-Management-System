@@ -16,6 +16,7 @@ namespace AES_Management_System
 		//===================================
     {
         public clsBA mBA = new clsBA();
+		string mFormName = "Admin";
 		//public BE mBE = new BE();
 
 		#region "Constructor:"
@@ -40,7 +41,7 @@ namespace AES_Management_System
 			//===============================================================
         {
             this.Hide();
-            frmEmployeeDetails pFrmEmployeeDetails = new frmEmployeeDetails();
+            frmEmployeeDetails pFrmEmployeeDetails = new frmEmployeeDetails(mFormName);
             pFrmEmployeeDetails.ShowDialog();
         }
         private void mnuExit_Click(object sender, EventArgs e)
@@ -64,15 +65,13 @@ namespace AES_Management_System
 		private void mnuEditEmployee_Click(object sender, EventArgs e)
 		{
 			this.Hide();
-			string pFormName = "Admin";
-			frmEmployeeEdit pFrmEmployeeEdit = new frmEmployeeEdit(pFormName);
+			frmEmployeeEdit pFrmEmployeeEdit = new frmEmployeeEdit(mFormName);
 			pFrmEmployeeEdit.ShowDialog();
 		}
 		private void mnuAttendanceCheck_Click(object sender, EventArgs e)
 		{
 			this.Hide();
-			string pFormName = "Admin";
-			frmAttendanceSummary pFrmAttendanceSummary = new frmAttendanceSummary(pFormName);
+			frmAttendanceSummary pFrmAttendanceSummary = new frmAttendanceSummary(mFormName);
 			pFrmAttendanceSummary.ShowDialog();
 		}
 		#endregion
