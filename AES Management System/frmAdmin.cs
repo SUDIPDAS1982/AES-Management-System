@@ -74,6 +74,12 @@ namespace AES_Management_System
 			frmAttendanceSummary pFrmAttendanceSummary = new frmAttendanceSummary(mFormName);
 			pFrmAttendanceSummary.ShowDialog();
 		}
+		private void mnuLeaveGenerate_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			frmLeaveGenerate pFrmLeaveGenerate = new frmLeaveGenerate();
+			pFrmLeaveGenerate.ShowDialog();
+		}
 		#endregion
 	}
 }

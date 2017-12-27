@@ -137,5 +137,20 @@ namespace BALayer
 		{
 			return mDA.SetUserNamePassword(BE_In);
 		}
+		public string GetMaxLeaveGenerateYear()
+		//======================================
+		{
+			return mDA.GetMaxLeaveGenerateYear();
+		}
+		public int LeaveGenerate()
+		//=========================
+		{
+			return mDA.LeaveGenerate();
+		}
+		public Dictionary<string, string> GetNewRegisteredUserIdName()
+		//==============================================================
+		{
+			return mDA.GetNewRegisteredUserIdName();
+		}
 	}
 }

@@ -41,6 +41,7 @@
 			this.mnuLeaveHistory = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.lblWelcome = new System.Windows.Forms.Label();
+			this.mnuLeaveGenerate = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -114,6 +115,7 @@
 			// mnuLeave
 			// 
 			this.mnuLeave.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuLeaveGenerate,
             this.mnuLeaveSummary,
             this.mnuLeaveHistory});
 			this.mnuLeave.Name = "mnuLeave";
@@ -147,6 +149,13 @@
 			this.lblWelcome.Size = new System.Drawing.Size(35, 13);
 			this.lblWelcome.TabIndex = 1;
 			this.lblWelcome.Text = "label1";
+			// 
+			// mnuLeaveGenerate
+			// 
+			this.mnuLeaveGenerate.Name = "mnuLeaveGenerate";
+			this.mnuLeaveGenerate.Size = new System.Drawing.Size(158, 22);
+			this.mnuLeaveGenerate.Text = "Leave Generate";
+			this.mnuLeaveGenerate.Click += new System.EventHandler(this.mnuLeaveGenerate_Click);
 			// 
 			// frmAdmin
 			// 
@@ -182,5 +191,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuLeaveHistory;
         private System.Windows.Forms.ToolStripMenuItem mnuExit;
         private System.Windows.Forms.Label lblWelcome;
-    }
+		private System.Windows.Forms.ToolStripMenuItem mnuLeaveGenerate;
+	}
 }
