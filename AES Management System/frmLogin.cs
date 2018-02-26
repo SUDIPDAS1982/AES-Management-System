@@ -12,7 +12,7 @@ using BALayer;
 
 namespace AES_Management_System
 {
-    //
+    //Comments
     public partial class frmLogin : Form
 		//===================================
     {
