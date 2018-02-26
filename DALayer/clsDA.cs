@@ -14,6 +14,7 @@ namespace DALayer
 {
     public class clsDA
     {
+        //
         SqlConnection con = new SqlConnection("Data Source=ADVENSOFT-PC\\SQLEXPRESS;Initial Catalog=AESDB;Integrated Security=True");
 
         public int UserLogin(clsBE BE_In)
